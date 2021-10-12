@@ -2,8 +2,8 @@
 
 .rsvp-button {
   position: absolute;
-  background-color: #f7f7f7;
-  border: 1px solid #e6e6e6;
+  background-color: #f7f7f775;
+  border: 1px solid #e6e6e6bd;
   border-radius: 5px;
   color: #000;
   font-family: 'Parisienne', cursive;
@@ -16,6 +16,13 @@
   top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.rsvp-button:hover {
+  background-color: #f7f7f7;
+  border: 1px solid #e6e6e6;
+  color: #000;
+  cursor: pointer;
 }
 .Typewriter {
   position: absolute;
