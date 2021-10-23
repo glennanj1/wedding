@@ -1,19 +1,36 @@
 import React, { useState } from 'react';
 import Typewriter from 'typewriter-effect';
-import Sound from 'react-sound';
+
+
+
+
+
 import confetti from 'canvas-confetti';
 import { useHistory } from "react-router-dom";
-import './App.css';
-
-
-
+import './Home.css';
+import 'animate.css';
 
 
 function Home() {
     
+    //browser routing and history
     const history = useHistory();
     
-    const [isPlaying, setIsPlaying] = useState(false);
+    
+
+    //animation unmount setup 
+    const [animateBeforeUnmount, setAnimateBeforeUnmount] = useState(false);
+    const [isRendered, setIsRendered] = React.useState(true);
+    const divRef = React.useRef();
+
+    const handleAnimationEnd = () => {
+      setIsRendered(false);
+      setAnimateBeforeUnmount(false);
+      
+      let path = `/about`; 
+      history.push(path);
+  
+    };
       
     const handleClick = () => {
       var end = Date.now() + (15 * 1000);
@@ -42,25 +59,18 @@ function Home() {
         }
       }());
       console.log('click');
-      setIsPlaying(true);
 
-      setTimeout(() => {
-        let path = `/about`; 
-        history.push(path);
-      }, 3000);
+      setAnimateBeforeUnmount(true)
+    
     };
 
     return (
-        <div>
+      <>
+        {isRendered && (<div className={animateBeforeUnmount && 'animate__animated animate__fadeOutLeft'} ref={divRef} onAnimationEnd={handleAnimationEnd} >
             <div className="App">
                 <video className="video" autoPlay loop playsInline defaultMuted muted >
                     <source src="https://d3ddatyom1hv87.cloudfront.net/Wedding.mp4" type="video/mp4" />
                 </video> 
-                <Sound
-                url="https://d3ddatyom1hv87.cloudfront.net/oneKiss.mp3"
-                playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
-                volume={50}
-                />
                 <Typewriter
                     options={{
                     strings: ['We are getting married!', 'Please RSVP below', 'Thanks for visiting the site!', "Who's excited?"],
@@ -70,7 +80,8 @@ function Home() {
                 />
                 <button onClick={handleClick} className="rsvp-button">RSVP</button>
                 </div>
-        </div>
+          </div>)}
+        </>
     )
 }
 
