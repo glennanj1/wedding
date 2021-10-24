@@ -19,8 +19,11 @@ function About() {
                 playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
                 volume={50}
                 />
+            <div className="photoContainer">
+
             <h1>John & Victoria</h1>
             <h2>10.29.2022</h2>
+            </div>
         </div>
     )
 }
