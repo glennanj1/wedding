@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import Typewriter from 'typewriter-effect';
 
-
-
-
-
 import confetti from 'canvas-confetti';
 import { useHistory } from "react-router-dom";
 import './Home.css';

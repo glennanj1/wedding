@@ -12,27 +12,71 @@
     font-family: 'Cinzel', serif;
 }
 
-.photoContainer {
-    display: flex;
-    height: 70vh;
-    width: 50vw;
-    border-radius: 5px;
-    background-image: url('./images/kneeling.png');
-    background-color: #00d5ff85;
-    background-size: contain;
-    box-shadow: 7px 8px 20px 11px #070d16;
-    background-repeat: no-repeat;
-    background-position: center;
-    flex-direction: column;
-    align-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
-
 h1 {
     text-shadow: 3px 2px white;
 }
 h2 {
     text-shadow: 3px 2px white;
+}
+@media screen and (min-width: 1201px) {
+    .photoContainer {
+        display: flex;
+        height: 70vh;
+        width: 50vw;
+        border-radius: 5px;
+        background-image: url('./images/kneeling.png');
+        background-color: #00d5ff85;
+        background-size: contain;
+        box-shadow: 7px 8px 20px 11px #070d16;
+        background-repeat: no-repeat;
+        background-position: center;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+  }
+  
+  @media screen and (max-width: 1200px) {
+    .photoContainer {
+        display: flex;
+        height: 70vh;
+        width: 50vw;
+        border-radius: 5px;
+        background-image: url('./images/kneeling.png');
+        background-color: #00d5ff85;
+        background-size: contain;
+        box-shadow: 7px 8px 20px 11px #070d16;
+        background-repeat: no-repeat;
+        background-position: center;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+@media screen and (max-width: 600px) { 
+    .photoContainer {
+        display: flex;
+        height: 48vh;
+        width: 80vw;
+        border-radius: 5px;
+        background-image: url('./images/kneeling.png');
+        background-color: #00d5ff85;
+        background-size: contain;
+        box-shadow: 7px 8px 20px 11px #070d16;
+        background-repeat: no-repeat;
+        background-position: center;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+
 }
