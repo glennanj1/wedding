@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
 
 .rsvp-button {
   position: absolute;
-  background-color: #f7f7f775;
-  border: 1px solid #e6e6e6bd;
+  background-color: #f7f7f700;
   border-radius: 5px;
-  color: #000;
-  font-family: 'Parisienne', cursive;
+  color: #f7f7f7;
   font-size: 1.5rem;
   font-weight: bold;
   padding: 0.5rem 1rem;
@@ -16,6 +15,9 @@
   top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 5px;
+  border: none;
+  font-family: 'Rampart One', cursive;
 }
 
 .rsvp-button:hover {
@@ -26,7 +28,7 @@
 }
 .Typewriter {
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
@@ -44,6 +46,12 @@
 }
 .App {
   text-align: center;
+  background-image: url('./images/alter.png');
+  background-position: center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  background-color: lightslategrey;
 }
 
 .App-logo {
@@ -106,12 +114,12 @@
   } 
   .Typewriter {
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 1rem;
     color: #fff;
-    text-shadow: 0 0 10px #000;
+    text-shadow: 4px 4px 4px #000;
     font-family: 'Parisienne', cursive;
     font-weight: bold;
     letter-spacing: 0.1em;
@@ -119,7 +127,6 @@
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
-    padding: 20px;
-  
+    padding: 20px;  
   }
 }
