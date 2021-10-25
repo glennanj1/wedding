@@ -1,0 +1,22 @@
+@media screen and (min-width: 601px) { 
+    .MuiBottomNavigation-root {
+        display: none !important;
+        background-color: grey;
+        width: 100vw;
+        
+    }
+
+}
+@media screen and (max-width: 600px) { 
+    .MuiBottomNavigation-root {
+        display: flex !important;
+        background-color: lightslategrey !important;
+        bottom: 0px !important;
+        position: absolute;
+        width: 100vw;
+    }
+
+    
+
+}
+
