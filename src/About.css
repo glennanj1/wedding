@@ -70,7 +70,7 @@ h2 {
         background-size: contain;
         box-shadow: 7px 8px 20px 11px #070d16;
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: bottom;
         flex-direction: column;
         align-content: center;
         flex-wrap: wrap;
