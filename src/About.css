@@ -1,4 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&family=Rye&display=swap');
+
+body {
+    background-color: lightslategrey;
+}
+
+.aboutWrapper {
+    width: 100vw;
+    height: 100vh;
+}
+
+.navButton {
+    background-color: #f7f7f700;
+    border-radius: 5px;
+    color: black;
+    text-shadow: 3px 2px 3px white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    padding: 10px;
+    border: none;
+    font-family: 'Rye', cursive;
+}
+
+.navButton:hover {
+    background-color: #f7f7f731;
+    border: 1px solid #e6e6e6;
+    color: #000;
+    cursor: pointer;
+    margin: 5px;
+  }
 
 .container {
     width: 100vw;
@@ -13,19 +46,34 @@
 }
 
 h1 {
-    text-shadow: 3px 2px white;
+    text-shadow: 3px 2px 3px white;
+    text-align: center;
 }
 h2 {
-    text-shadow: 3px 2px white;
+    text-shadow: 3px 2px 3px white;
+    text-align: center;
 }
+
 @media screen and (min-width: 1201px) {
+    .nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 20vh;
+        width: 100vw;
+        position: absolute;
+        z-index: 1;
+    }
     .photoContainer {
         display: flex;
         height: 70vh;
         width: 50vw;
         border-radius: 5px;
         background-image: url('./images/kneeling.png');
-        background-color: #00d5ff85;
+        background-color: b89ea994;
         background-size: contain;
         box-shadow: 7px 8px 20px 11px #070d16;
         background-repeat: no-repeat;
@@ -35,17 +83,30 @@ h2 {
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
+        background-position: bottom;
     }
   }
   
   @media screen and (max-width: 1200px) {
+    .nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 20vh;
+        width: 100vw;
+        position: absolute;
+        z-index: 1;
+    }
     .photoContainer {
         display: flex;
         height: 70vh;
         width: 50vw;
         border-radius: 5px;
         background-image: url('./images/kneeling.png');
-        background-color: #00d5ff85;
+        background-color: b89ea994;
         background-size: contain;
         box-shadow: 7px 8px 20px 11px #070d16;
         background-repeat: no-repeat;
@@ -55,6 +116,7 @@ h2 {
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
+        background-position: bottom;
     }
 }
 
@@ -66,7 +128,7 @@ h2 {
         width: 80vw;
         border-radius: 5px;
         background-image: url('./images/kneeling.png');
-        background-color: #00d5ff85;
+        background-color: #b89ea994;
         background-size: contain;
         box-shadow: 7px 8px 20px 11px #070d16;
         background-repeat: no-repeat;
@@ -76,6 +138,15 @@ h2 {
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
+    }
+    .nav {
+        display: none !important;
+    }
+
+    .aboutWrapper {
+        background-image: url('./images/flower.png');
+        background-size: contain;
+        background-repeat: repeat;
     }
 
 
