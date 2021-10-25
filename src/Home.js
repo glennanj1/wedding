@@ -71,7 +71,7 @@ function Home() {
                     loop: true,
                     }}
                 />
-                <button onClick={handleClick} className="rsvp-button">RSVP</button>
+                <button onClick={handleClick} className="rsvp-button">Enter</button>
                 </div>
           </div>)}
         </>
