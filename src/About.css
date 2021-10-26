@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rampart+One&family=Rye&display=swap');
 
+html {
+    overflow: hidden;
+    height: 100vh;
+}
 
 body {
     background-color: lightslategrey;
