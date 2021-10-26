@@ -9,7 +9,7 @@
 @media screen and (max-width: 600px) { 
     .MuiBottomNavigation-root {
         display: flex !important;
-        background-color: rgba(119, 136, 153, 0.219) !important;
+        background-color: rgba(119, 136, 153, 0.658) !important;
         bottom: 0px !important;
         position: fixed;
         width: 100vw;
