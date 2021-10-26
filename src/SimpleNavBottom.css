@@ -2,21 +2,27 @@
     .MuiBottomNavigation-root {
         display: none !important;
         background-color: grey;
-        width: 100vw;
-        
+        width: 100vw; 
     }
 
 }
 @media screen and (max-width: 600px) { 
     .MuiBottomNavigation-root {
         display: flex !important;
-        background-color: lightslategrey !important;
+        background-color: rgba(119, 136, 153, 0.219) !important;
         bottom: 0px !important;
         position: absolute;
         width: 100vw;
+        height: 100vh;
     }
 
-    
+    .MuiBottomNavigationAction-root {
+        color: white !important;   
+    }
+
+    .MuiBottomNavigationAction-root.Mui-selected {
+        color: purple !important;
+    }
 
 }
 
