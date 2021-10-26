@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './About.css'
 import 'animate.css';
 import SimpleBottomNavigation from './SimpleNavBottom'
+import Us from './Us'
 import Location from './Location';
-import Sound from 'react-sound';
+// import Sound from 'react-sound';
 
 function About() {
 
-
-    
-    const [isPlaying, setIsPlaying] = useState(false);
     const [isDefault, setIsDefault] = useState(true);
     const [isLocation, setIsLocation] = useState(false)
 
@@ -25,13 +23,8 @@ function About() {
           setIsLocation(false);
           break;
       }
-      
     }
 
-    useEffect(() => {
-        // Update the document title using the browser API
-        setIsPlaying(true)
-    }, []);
     return (
     <>
     <div className="aboutWrapper">
@@ -43,19 +36,8 @@ function About() {
         <button onClick={handleClick} className="navButton" id="location">Our Story</button>
       </div>
 
-      {isDefault ? (
-          <div className="container animate__animated animate__slideInRight">
-              <Sound
-                  url="https://d3ddatyom1hv87.cloudfront.net/oneKiss.mp3"
-                  playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
-                  volume={50}
-                  />
-              <div className="photoContainer">
-
-              <h1>John & Victoria</h1>
-              <h2>10.29.2022</h2>
-              </div>
-          </div>
+      {isDefault ? ( 
+        <Us />
       ) : null}
       {isLocation ? (
         <Location />
