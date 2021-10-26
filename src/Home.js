@@ -11,8 +11,6 @@ function Home() {
     
     //browser routing and history
     const history = useHistory();
-    
-    
 
     //animation unmount setup 
     const [animateBeforeUnmount, setAnimateBeforeUnmount] = useState(false);
@@ -23,7 +21,7 @@ function Home() {
       setIsRendered(false);
       setAnimateBeforeUnmount(false);
       
-      let path = `/about`; 
+      let path = `/about`;
       history.push(path);
   
     };
@@ -62,11 +60,11 @@ function Home() {
 
     return (
       <>
-        {isRendered && (<div className={animateBeforeUnmount && 'animate__animated animate__fadeOutLeft'} ref={divRef} onAnimationEnd={handleAnimationEnd} >
+        {isRendered && (<div className={animateBeforeUnmount && 'animate__animated animate__fadeOut'} ref={divRef} onAnimationEnd={handleAnimationEnd} >
             <div className="App" >
                 <Typewriter
                     options={{
-                    strings: ['We are getting married!', 'Please RSVP below', 'Thanks for visiting the site!', "Who's excited?"],
+                    strings: ['We are getting married', 'Thanks for Visitng', 'The Knot please hire me', 'Come Back any time!', "Who's excited?", "If you made it this far keep reading", "I can't wait to tear it up!"],
                     autoStart: true,
                     loop: true,
                     }}
@@ -74,7 +72,7 @@ function Home() {
                 <button onClick={handleClick} className="rsvp-button">Enter</button>
                 </div>
           </div>)}
-        </>
+      </>
     )
 }
 
