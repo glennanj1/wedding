@@ -8,8 +8,12 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import EventSeatIcon from '@mui/icons-material/EventSeat';
 import './SimpleNavBottom.css'
 
-export default function SimpleBottomNavigation() {
+export default function SimpleBottomNavigation(props) {
   const [value, setValue] = React.useState(0);
+
+  const handleClick = e => {
+    props.handleCallback(e);
+  }
 
   return (
     <Box sx={{ width: 500 }}>
@@ -20,10 +24,10 @@ export default function SimpleBottomNavigation() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Home" icon={<HomeIcon />} />
-        <BottomNavigationAction label="Location" icon={<LocationOnIcon />} />
-        <BottomNavigationAction label="About Us" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="RSVP" icon={<EventSeatIcon />} />
+        <BottomNavigationAction onClick={handleClick} id="home" label="Home" icon={<HomeIcon />} />
+        <BottomNavigationAction onClick={handleClick} id="location" label="Location" icon={<LocationOnIcon />} />
+        <BottomNavigationAction onClick={handleClick} id="about" label="About Us" icon={<FavoriteIcon />} />
+        <BottomNavigationAction onClick={handleClick} id="rsvp" label="RSVP" icon={<EventSeatIcon />} />
       </BottomNavigation>
     </Box>
   );
