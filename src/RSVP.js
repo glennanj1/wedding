@@ -50,7 +50,7 @@ function RSVP() {
     console.log(obj);
 
     //update when submitted
-    fetch(`https://wedding-glennan.herokuapp.com/${obj._id}`, {
+    fetch(`https://wedding-glennan.herokuapp.com/guests/update/${obj._id}`, {
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -63,7 +63,7 @@ function RSVP() {
         Dietary: obj.Dietary,
         guestName: obj.guestName,
         guestMeal: obj.guestMeal,
-        guestDietary: obj.guestDietary,
+        guestDietary: obj.guestDietary
       }),
     })
       .then((r) => r.json())
@@ -178,36 +178,30 @@ function GuestForm(props) {
 
   const handleSubmit = (e) => {
     console.log(e);
-    let oldObj = props.guest;
-    console.log("guest obj" + oldObj);
-    console.log(isAttending);
-    console.log("submitted");
-    let newObj = {
-      ...oldObj,
-      attending: isAttending,
-      Entree: isFoodSelection,
-      Dietary: isDietaryRestriction,
-      guestName: isGuestName,
-      guestMeal: isGuestMeal,
-      guestDietary: isGuestDietaryRestriction,
-    };
-    console.log(newObj);
-    props.updateState(newObj);
-    e.preventDefault();
+      let oldObj = props.guest;
+      console.log("guest obj" + oldObj);
+      console.log(isAttending);
+      console.log("submitted");
+      let newObj = {
+        ...oldObj,
+        attending: isAttending,
+        Entree: isFoodSelection,
+        Dietary: isDietaryRestriction,
+        guestName: isGuestName,
+        guestMeal: isGuestMeal,
+        guestDietary: isGuestDietaryRestriction,
+      };
+      console.log(newObj);
+      props.updateState(newObj);
+      e.preventDefault();
+    
   };
 
   return (
     <>
       {isAttending ? (
         <form className="rsvpForm" onSubmit={handleSubmit}>
-          <Box
-            component="form"
-            sx={{
-              '& > :not(style)': { m: 1, width: '25ch' },
-            }}
-            noValidate
-            autoComplete="off"
-          >
+
           <h1>{props.guest.name}</h1>
           <FormControl color="secondary" component="fieldset">
             <FormLabel component="legend">Food Selection</FormLabel>
@@ -309,7 +303,7 @@ function GuestForm(props) {
               Submit
             </Fab>
           </FormControl>
-          </Box>
+      
         </form>
       ) : (
         <form className="rsvpForm" onSubmit={handleSubmit}>
