@@ -8,6 +8,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Switch from "@mui/material/Switch";
+import Checkbox from '@mui/material/Checkbox';
 import Fab from "@mui/material/Fab";
 
 function RSVP() {
@@ -70,6 +71,8 @@ function RSVP() {
           .indexOf(obj.name);
 
           let person = isArray[index]
+
+          console.log(person);
 
           setisConfirmation(true);
           setisGuestConfirmation(person)
@@ -141,10 +144,11 @@ function GuestForm(props) {
   const [isAttending, setisAttending] = useState(true);
   const [isFoodSelection, setisFoodSelection] = useState("chicken");
   const [isDietaryRestriction, setisDietaryRestriction] = useState("");
-  const [isGuestName, setisGuestName] = useState("");
+  const [isGuestName, setisGuestName] = useState("null");
   const [isGuestMeal, setisGuestMeal] = useState("chicken");
   const [isGuestDietaryRestriction, setisGuestDietaryRestriction] =
-    useState("");
+    useState("null");
+  const [isPlusOne, setisPlusOne] = useState(false)
 
   const handleChange = (e) => {
     console.log("target id: " + e.target.id);
@@ -174,13 +178,22 @@ function GuestForm(props) {
         console.log("guest restrictions " + e.target.value);
         setisGuestDietaryRestriction(e.target.value);
         break;
+      case "plusOne":
+        console.log('plus one')
+        setisPlusOne(e.target.checked)
+        if (e.target.checked === false){
+          setisGuestName('null');
+          setisGuestMeal('null');
+          setisGuestDietaryRestriction('null');
+        }
+        break;
       default:
         break;
     }
   };
 
   const handleSubmit = (e) => {
-    console.log(e);
+      console.log(e);
       let oldObj = props.guest;
       console.log("guest obj" + oldObj);
       console.log(isAttending);
@@ -250,56 +263,63 @@ function GuestForm(props) {
               variant="outlined"
               onChange={handleChange}
             />
+
+
             {props.guest.numberOfGuests === 0 ? null : (
               <>
-                <h1>Guest Form</h1>
-                <TextField
-                  required
-                  id="guestName"
-                  label="Name"
-                  color="secondary"
-                  variant="outlined"
-                  onChange={handleChange}
-                />
-                <FormLabel component="legend">Guest Food Selection</FormLabel>
-                <RadioGroup
-                  required
-                  row
-                  aria-label="food"
-                  name="row-radio-buttons-group"
-                  onChange={handleChange}
-                  defaultValue="chicken"
-                >
-                  <FormControlLabel
-                    value="chicken"
-                    control={
-                      <Radio color="secondary" id="guestfoodSelection" />
-                    }
-                    label="Chicken"
+                <FormControlLabel control={<Checkbox onChange={handleChange} id="plusOne" color="secondary"/>} label="Plus One" />
+                {isPlusOne ? (
+                  <>
+                  <h1>Guest Form</h1>
+                  <TextField
+                    required
+                    id="guestName"
+                    label="Name"
+                    color="secondary"
+                    variant="outlined"
+                    onChange={handleChange}
                   />
-                  <FormControlLabel
-                    value="filet"
-                    control={
-                      <Radio color="secondary" id="guestfoodSelection" />
-                    }
-                    label="Filet"
+                  <FormLabel component="legend">Guest Food Selection</FormLabel>
+                  <RadioGroup
+                    required
+                    row
+                    aria-label="food"
+                    name="row-radio-buttons-group"
+                    onChange={handleChange}
+                    defaultValue="chicken"
+                  >
+                    <FormControlLabel
+                      value="chicken"
+                      control={
+                        <Radio color="secondary" id="guestfoodSelection" />
+                      }
+                      label="Chicken"
+                    />
+                    <FormControlLabel
+                      value="filet"
+                      control={
+                        <Radio color="secondary" id="guestfoodSelection" />
+                      }
+                      label="Filet"
+                    />
+                    <FormControlLabel
+                      value="crab cakes"
+                      control={
+                        <Radio color="secondary" id="guestfoodSelection" />
+                      }
+                      label="Crab Cake"
+                    />
+                  </RadioGroup>
+                  <TextField
+                    required
+                    id="guestDietary"
+                    label="Dietary Restrictions"
+                    color="secondary"
+                    variant="outlined"
+                    onChange={handleChange}
                   />
-                  <FormControlLabel
-                    value="crab cakes"
-                    control={
-                      <Radio color="secondary" id="guestfoodSelection" />
-                    }
-                    label="Crab Cake"
-                  />
-                </RadioGroup>
-                <TextField
-                  required
-                  id="guestDietary"
-                  label="Dietary Restrictions"
-                  color="secondary"
-                  variant="outlined"
-                  onChange={handleChange}
-                />
+                 </>
+                ) : null}
               </>
             )}
 
@@ -355,10 +375,15 @@ function Confirmation(props) {
                     <li>Dietary Restrictions: {props.guestConfirmation.Dietary}</li>
                     {props.guestConfirmation.numberOfGuests !== 0 ? (
                         <>
-                            <li>Plus One: ✅</li>
-                            <li>Guest Name: {props.guestConfirmation.guestName}</li>
-                            <li>Guest Meal: {props.guestConfirmation.guestMeal}</li>
-                            <li>Guest Dietary: {props.guestConfirmation.guestDietary}</li>  
+                            {props.guestConfirmation.guestName !== 'null' ? (
+                              <>
+                              <li>Plus One: ✅</li>
+                              <li>Guest Name: {props.guestConfirmation.guestName}</li>
+                              <li>Guest Meal: {props.guestConfirmation.guestMeal}</li>
+                              <li>Guest Dietary: {props.guestConfirmation.guestDietary}</li>  
+                              </>
+
+                            ) : null }
                         </>                  
                     ) : null}
                 </ul>
