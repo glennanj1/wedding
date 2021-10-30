@@ -14,7 +14,7 @@ import Fab from "@mui/material/Fab";
 
 function RSVP() {
   useEffect(() => {
-    fetch("http://localhost:3000/guests")
+    fetch("https://glennan-wedding.herokuapp.com/guests")
       .then((r) => r.json())
       .then((data) => setisArray(data))
       .catch((err) => console.log(err));
@@ -50,7 +50,7 @@ function RSVP() {
     console.log(obj);
 
     //update when submitted
-    fetch(`http://localhost:3000/guests/update/${obj._id}`, {
+    fetch(`https://glennan-wedding.herokuapp.com/${obj._id}`, {
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
