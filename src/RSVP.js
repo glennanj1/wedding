@@ -241,7 +241,7 @@ function GuestForm(props) {
               variant="outlined"
               onChange={handleChange}
             />
-            {props.guest.numberOfGuests == 0 ? null : (
+            {props.guest.numberOfGuests === 0 ? null : (
               <>
                 <h1>Guest Form</h1>
                 <TextField
