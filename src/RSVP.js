@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Box from '@mui/material/Box';
 import TextField from "@mui/material/TextField";
 
 //radio button form control
@@ -10,7 +9,6 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Switch from "@mui/material/Switch";
 import Fab from "@mui/material/Fab";
-// import Box from '@mui/material/Box';
 
 function RSVP() {
   useEffect(() => {
@@ -35,19 +33,14 @@ function RSVP() {
   const handleStateChange = (obj) => {
     console.log("updated obj");
     console.log(obj);
-    //map over object and find index by name (eventually find by id when hooked up to DB)
-    let index = isArray
-      .map((e) => {
-        return e.name;
-      })
-      .indexOf(obj.name);
-    //copy old arr and spread *like butter*
-    let newArr = [...isArray];
-    //update the new arr at its index
-    newArr[index] = { ...newArr[index], ...obj };
-    //set the new state (eventually a fetch to patch the already entered arr)
-    setisArray(newArr);
-    console.log(obj);
+   
+    // //copy old arr and spread *like butter*
+    // let newArr = [...isArray];
+    // //update the new arr at its index
+    // newArr[index] = { ...newArr[index], ...obj };
+    // //set the new state (eventually a fetch to patch the already entered arr)
+    // setisArray(newArr);
+    // console.log(obj);
 
     //update when submitted
     fetch(`https://wedding-glennan.herokuapp.com/guests/update/${obj._id}`, {
@@ -68,9 +61,18 @@ function RSVP() {
     })
       .then((r) => r.json())
       .then((data) => {
-          console.log(data);
+        //map over object and find index by name (eventually find by id when hooked up to DB)
+        console.log(data);
+        let index = isArray
+          .map((e) => {
+            return e.name;
+          })
+          .indexOf(obj.name);
+
+          let person = isArray[index]
+
           setisConfirmation(true);
-          setisGuestConfirmation(data)
+          setisGuestConfirmation(person)
       })
       .catch((err) => console.log(err));
     console.log("line 44 is array");
@@ -115,6 +117,7 @@ function RSVP() {
           <form onSubmit={handleSubmit}>
           
             <TextField
+              required
               id="outlined-basic"
               label="Name"
               color="secondary"
@@ -136,10 +139,10 @@ function RSVP() {
 function GuestForm(props) {
   //state changes
   const [isAttending, setisAttending] = useState(true);
-  const [isFoodSelection, setisFoodSelection] = useState("");
+  const [isFoodSelection, setisFoodSelection] = useState("chicken");
   const [isDietaryRestriction, setisDietaryRestriction] = useState("");
   const [isGuestName, setisGuestName] = useState("");
-  const [isGuestMeal, setisGuestMeal] = useState("");
+  const [isGuestMeal, setisGuestMeal] = useState("chicken");
   const [isGuestDietaryRestriction, setisGuestDietaryRestriction] =
     useState("");
 
@@ -210,6 +213,7 @@ function GuestForm(props) {
               aria-label="food"
               name="row-radio-buttons-group"
               onChange={handleChange}
+              defaultValue="chicken"
             >
               <FormControlLabel
                 value="chicken"
@@ -239,6 +243,7 @@ function GuestForm(props) {
               label="Attending"
             />
             <TextField
+              required
               id="dietary"
               label="Dietary Restrictions"
               color="secondary"
@@ -249,6 +254,7 @@ function GuestForm(props) {
               <>
                 <h1>Guest Form</h1>
                 <TextField
+                  required
                   id="guestName"
                   label="Name"
                   color="secondary"
@@ -257,10 +263,12 @@ function GuestForm(props) {
                 />
                 <FormLabel component="legend">Guest Food Selection</FormLabel>
                 <RadioGroup
+                  required
                   row
                   aria-label="food"
                   name="row-radio-buttons-group"
                   onChange={handleChange}
+                  defaultValue="chicken"
                 >
                   <FormControlLabel
                     value="chicken"
@@ -285,6 +293,7 @@ function GuestForm(props) {
                   />
                 </RadioGroup>
                 <TextField
+                  required
                   id="guestDietary"
                   label="Dietary Restrictions"
                   color="secondary"
