@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import Box from '@mui/material/Box';
+import Box from '@mui/material/Box';
 import TextField from "@mui/material/TextField";
 
 //radio button form control
@@ -14,7 +14,7 @@ import Fab from "@mui/material/Fab";
 
 function RSVP() {
   useEffect(() => {
-    fetch("https://glennan-wedding.herokuapp.com/guests")
+    fetch("https://wedding-glennan.herokuapp.com/guests")
       .then((r) => r.json())
       .then((data) => setisArray(data))
       .catch((err) => console.log(err));
@@ -50,7 +50,7 @@ function RSVP() {
     console.log(obj);
 
     //update when submitted
-    fetch(`https://glennan-wedding.herokuapp.com/${obj._id}`, {
+    fetch(`https://wedding-glennan.herokuapp.com/${obj._id}`, {
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -90,7 +90,7 @@ function RSVP() {
     if (person != null || undefined) {
       //if they already registered
       debugger;
-      if (person.attending !== null || undefined) {
+      if (person.Entree !== '' || null) {
         setisConfirmation(true);
         console.log(person);
         setisGuestConfirmation(person);
@@ -113,6 +113,7 @@ function RSVP() {
         <>
           <h1>RSVP Form</h1>
           <form onSubmit={handleSubmit}>
+          
             <TextField
               id="outlined-basic"
               label="Name"
@@ -120,6 +121,7 @@ function RSVP() {
               variant="outlined"
               onChange={handleChange}
             />
+        
           </form>
 
           <h1>Please Enter Name</h1>
@@ -198,6 +200,14 @@ function GuestForm(props) {
     <>
       {isAttending ? (
         <form className="rsvpForm" onSubmit={handleSubmit}>
+          <Box
+            component="form"
+            sx={{
+              '& > :not(style)': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+          >
           <h1>{props.guest.name}</h1>
           <FormControl color="secondary" component="fieldset">
             <FormLabel component="legend">Food Selection</FormLabel>
@@ -299,6 +309,7 @@ function GuestForm(props) {
               Submit
             </Fab>
           </FormControl>
+          </Box>
         </form>
       ) : (
         <form className="rsvpForm" onSubmit={handleSubmit}>
