@@ -64,18 +64,18 @@ function RSVP() {
       .then((data) => {
         //map over object and find index by name (eventually find by id when hooked up to DB)
         console.log(data);
-        let index = isArray
-          .map((e) => {
-            return e.name;
-          })
-          .indexOf(obj.name);
+        // let index = isArray
+        //   .map((e) => {
+        //     return e.name;
+        //   })
+        //   .indexOf(obj.name);
 
-          let person = isArray[index]
+        //   let person = isArray[index]
 
-          console.log(person);
+          // console.log(person);
 
           setisConfirmation(true);
-          setisGuestConfirmation(person)
+          setisGuestConfirmation(obj);
       })
       .catch((err) => console.log(err));
     console.log("line 44 is array");
