@@ -34,14 +34,6 @@ function RSVP() {
   const handleStateChange = (obj) => {
     console.log("updated obj");
     console.log(obj);
-   
-    // //copy old arr and spread *like butter*
-    // let newArr = [...isArray];
-    // //update the new arr at its index
-    // newArr[index] = { ...newArr[index], ...obj };
-    // //set the new state (eventually a fetch to patch the already entered arr)
-    // setisArray(newArr);
-    // console.log(obj);
 
     //update when submitted
     fetch(`https://wedding-glennan.herokuapp.com/guests/update/${obj._id}`, {
@@ -64,18 +56,8 @@ function RSVP() {
       .then((data) => {
         //map over object and find index by name (eventually find by id when hooked up to DB)
         console.log(data);
-        // let index = isArray
-        //   .map((e) => {
-        //     return e.name;
-        //   })
-        //   .indexOf(obj.name);
-
-        //   let person = isArray[index]
-
-          // console.log(person);
-
-          setisConfirmation(true);
-          setisGuestConfirmation(obj);
+        setisConfirmation(true);
+        setisGuestConfirmation(obj);
       })
       .catch((err) => console.log(err));
     console.log("line 44 is array");
@@ -363,8 +345,10 @@ function GuestForm(props) {
 
 function Confirmation(props) {
 
+
     return (
         <>
+        {props.guestConfirmation.attending ? (
           <div className="container">
               <h1>Confirmation Page</h1>
               <h2>Details: </h2>
@@ -389,6 +373,12 @@ function Confirmation(props) {
                 </ul>
               </div>
           </div>
+        ) : (
+          <div className="container">
+              <h1>Confirmation Page</h1>
+              <h2>Sorry That Your Unable To Go!</h2>
+          </div>
+        )}
         </>
     )
     
