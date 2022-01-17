@@ -11,7 +11,6 @@ import Switch from "@mui/material/Switch";
 import Checkbox from '@mui/material/Checkbox';
 import Fab from "@mui/material/Fab";
 
-
 function RSVP(props) {
 
   let passError = useCallback(e => {
@@ -97,10 +96,10 @@ function RSVP(props) {
   //handle submission find name and set array name if found else render alert or error
   const handleSubmit = (e) => {
     e.preventDefault();
-    let person = isArray.find((n) => n.name === isName);
+    let name = isName.replace(/^\s+|\s+$/gm,'');
+    let person = isArray.find((n) => n.name === name);
     if (person != null || undefined) {
       //if they already registered
-      debugger;
       if (person.Entree !== '' || null) {
         setisConfirmation(true);
         // console.log(person);
@@ -124,7 +123,7 @@ function RSVP(props) {
         <>
           <h1>RSVP Form</h1>
           <form onSubmit={handleSubmit}>
-          
+
             <TextField
               required
               id="outlined-basic"
