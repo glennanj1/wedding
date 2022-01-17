@@ -6,6 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import EventSeatIcon from '@mui/icons-material/EventSeat';
+import ModeStandbyIcon from '@mui/icons-material/ModeStandby';
 import './SimpleNavBottom.css'
 
 export default function SimpleBottomNavigation(props) {
@@ -28,6 +29,7 @@ export default function SimpleBottomNavigation(props) {
         <BottomNavigationAction onClick={handleClick} id="location" label="Location" icon={<LocationOnIcon />} />
         <BottomNavigationAction onClick={handleClick} id="about" label="About Us" icon={<FavoriteIcon />} />
         <BottomNavigationAction onClick={handleClick} id="rsvp" label="RSVP" icon={<EventSeatIcon />} />
+        <BottomNavigationAction onClick={handleClick} id="registry" label="Registry" icon={<ModeStandbyIcon />} />
       </BottomNavigation>
     </Box>
   );
