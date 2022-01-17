@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import TextField from "@mui/material/TextField";
 
 //radio button form control
@@ -11,14 +11,16 @@ import Switch from "@mui/material/Switch";
 import Checkbox from '@mui/material/Checkbox';
 import Fab from "@mui/material/Fab";
 
-function RSVP() {
-  useEffect(() => {
-    fetch("https://wedding-glennan.herokuapp.com/guests")
-      .then((r) => r.json())
-      .then((data) => setisArray(data))
-      .catch((err) => console.log(err));
-  }, []);
 
+function RSVP(props) {
+
+  let passError = useCallback(e => {
+    props.handleCallback(e)
+  },[props]) 
+  
+  //error checker
+  // const [errorFetchedChecker, setErrorFetchedChecker] = useState(false);
+  // console.log(errorFetchedChecker);
   //setting initial array
   const [isArray, setisArray] = useState([]);
   //setting name on change handler
@@ -30,10 +32,31 @@ function RSVP() {
   //set object for confirmation
   const [isGuestConfirmation, setisGuestConfirmation] = useState({})
 
+  useEffect(() => {
+
+      if (props.passClickDown) {
+        setisArrayName('');
+        setisConfirmation(false);
+      }
+
+      fetch("https://wedding-glennan.herokuapp.com/guests")
+          .then((r) => r.json())
+          .then((data) => {
+            console.log('first fetch or refetching')
+            setisArray(data)
+            passError('none')
+          })
+          .catch((err) => {
+            passError(err);
+            //setErrorFetchedChecker(c => !c);
+            console.log(err)});
+  }, [passError, props.passClickDown]);
+
+
   //handle state change (app is small enough to use local state vs redux)
   const handleStateChange = (obj) => {
-    console.log("updated obj");
-    console.log(obj);
+    // console.log("updated obj");
+    // console.log(obj);
 
     //update when submitted
     fetch(`https://wedding-glennan.herokuapp.com/guests/update/${obj._id}`, {
@@ -55,18 +78,19 @@ function RSVP() {
       .then((r) => r.json())
       .then((data) => {
         //map over object and find index by name (eventually find by id when hooked up to DB)
-        console.log(data);
+        // console.log(data);
         setisConfirmation(true);
         setisGuestConfirmation(obj);
       })
       .catch((err) => console.log(err));
-    console.log("line 44 is array");
-    console.log(isArray);
+    alert("Please Try Again")
+    // console.log("line 44 is array");
+    // console.log(isArray);
   };
   //set name on change
   const handleChange = (e) => {
-    console.log("change");
-    console.log(e.target.value);
+    // console.log("change");
+    // console.log(e.target.value);
     setisName(e.target.value);
     e.preventDefault();
   };
@@ -79,7 +103,7 @@ function RSVP() {
       debugger;
       if (person.Entree !== '' || null) {
         setisConfirmation(true);
-        console.log(person);
+        // console.log(person);
         setisGuestConfirmation(person);
       } else {
         setisArrayName(person);
@@ -91,7 +115,7 @@ function RSVP() {
     }
   };
   return (
-      <>
+    <>    
     {isConfirmation ? (<Confirmation guestConfirmation={isGuestConfirmation} />) : (
     <div className="container animate__animated animate__slideInLeft">
       {isArrayName ? (
@@ -133,35 +157,35 @@ function GuestForm(props) {
   const [isPlusOne, setisPlusOne] = useState(false)
 
   const handleChange = (e) => {
-    console.log("target id: " + e.target.id);
+    // console.log("target id: " + e.target.id);
     switch (e.target.id) {
       case "foodSelection":
-        console.log(e.target.value);
+        // console.log(e.target.value);
         setisFoodSelection(e.target.value);
         break;
       case "attending":
-        console.log("checked: " + e.target.checked);
+        // console.log("checked: " + e.target.checked);
         setisAttending(e.target.checked);
         break;
       case "dietary":
-        console.log("dietary");
-        console.log(e.target.value);
+        // console.log("dietary");
+        // console.log(e.target.value);
         setisDietaryRestriction(e.target.value);
         break;
       case "guestName":
-        console.log("guest name" + e.target.value);
+        // console.log("guest name" + e.target.value);
         setisGuestName(e.target.value);
         break;
       case "guestfoodSelection":
-        console.log("guest food " + e.target.value);
+        // console.log("guest food " + e.target.value);
         setisGuestMeal(e.target.value);
         break;
       case "guestDietary":
-        console.log("guest restrictions " + e.target.value);
+        // console.log("guest restrictions " + e.target.value);
         setisGuestDietaryRestriction(e.target.value);
         break;
       case "plusOne":
-        console.log('plus one')
+        // console.log('plus one')
         setisPlusOne(e.target.checked)
         if (e.target.checked === false){
           setisGuestName('null');
@@ -175,11 +199,11 @@ function GuestForm(props) {
   };
 
   const handleSubmit = (e) => {
-      console.log(e);
+      // console.log(e);
       let oldObj = props.guest;
-      console.log("guest obj" + oldObj);
-      console.log(isAttending);
-      console.log("submitted");
+      // console.log("guest obj" + oldObj);
+      // console.log(isAttending);
+      // console.log("submitted");
       let newObj = {
         ...oldObj,
         attending: isAttending,
@@ -189,7 +213,7 @@ function GuestForm(props) {
         guestMeal: isGuestMeal,
         guestDietary: isGuestDietaryRestriction,
       };
-      console.log(newObj);
+      // console.log(newObj);
       props.updateState(newObj);
       e.preventDefault();
     
@@ -379,6 +403,7 @@ function Confirmation(props) {
               <h2>Sorry That Your Unable To Go!</h2>
           </div>
         )}
+        
         </>
     )
     
