@@ -81,8 +81,11 @@ function RSVP(props) {
         setisConfirmation(true);
         setisGuestConfirmation(obj);
       })
-      .catch((err) => console.log(err));
-    alert("Please Try Again")
+      .catch((err) => {
+        console.log(err);
+        alert('Please Try Again Shortly')
+      });
+    
     // console.log("line 44 is array");
     // console.log(isArray);
   };
