@@ -28,13 +28,13 @@ function About() {
         setIsLoading(false);
       } else {
         setIsLoading(true)
-        console.log(e);
-        console.log('error line 25 prop')
+        // console.log(e);
+        // console.log('error line 25 prop')
       }
     }
 
     const handleClick = (e) => {
-      console.log(e.currentTarget.id);
+      // console.log(e.currentTarget.id);
       switch (e.currentTarget.id) {
         case 'location':
           setIsDefault(false);
