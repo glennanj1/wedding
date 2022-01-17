@@ -5,8 +5,9 @@
   position: absolute;
   background-color: #f7f7f700;
   border-radius: 5px;
-  color: #f7f7f7;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  color: #f0fff0;
+  text-shadow: 0 0 10px #000;
   font-weight: bold;
   padding: 0.5rem 1rem;
   text-decoration: none;
@@ -21,9 +22,9 @@
 }
 
 .rsvp-button:hover {
-  background-color: #f7f7f73d;
+  background-color: #c8bfb1;
   border: 1px solid #e6e6e6;
-  color: #000;
+  color: #cad8f6;
   cursor: pointer;
 }
 .Typewriter {
@@ -32,7 +33,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
-  color: #fff;
+  color: #f0fff0;
   text-shadow: 0 0 10px #000;
   font-family: 'Parisienne', cursive;
   font-weight: bold;
