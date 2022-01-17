@@ -13,7 +13,7 @@ function Us() {
     }, []);
 
     return (
-        <div className="container animate__animated animate__slideInRight">
+        <div className="container animate__animated animate__slideInLeft">
             <Sound
                 url="https://d3ddatyom1hv87.cloudfront.net/oneKiss.mp3"
                 playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
