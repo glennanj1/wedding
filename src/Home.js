@@ -52,7 +52,7 @@ function Home() {
           requestAnimationFrame(frame);
         }
       }());
-      console.log('click');
+      // console.log('click');
 
       setAnimateBeforeUnmount(true)
     
