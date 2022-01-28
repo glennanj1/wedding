@@ -10,7 +10,7 @@ function Location() {
         <Nav />
         <div className="location_wrapper animate__animated animate__slideInLeft">
                 <div className="location_picture">
-                <h2></h2>
+                <h2> </h2>
                 </div>
                 <div className="location_container">
                 <h2 className="location_h2">
