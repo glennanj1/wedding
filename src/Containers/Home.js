@@ -64,13 +64,12 @@ function Home() {
             <div className="App">
                 <Typewriter
                     options={{
-                    strings: ['We are getting married', 'Thanks for Visitng', 'The Knot please hire me', 'Come Back any time!', "Who's excited?", "If you made it this far keep reading", "I can't wait to tear it up!"],
+                    strings: ['We are getting married!!!', 'Thanks for Visitng', 'Come Back any time!', "Who's excited?", 'Chicken? Filet? Crab Cakes?'],
                     autoStart: true,
                     loop: true,
                     }}
                 />
                 <Link onClick={handleClick} className="rsvp-button" to="/about" >Enter</Link>
-                {/* <button onClick={handleClick} className="rsvp-button">Enter</button> */}
                 </div>
           </div>)}
       </>
