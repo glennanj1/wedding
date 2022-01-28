@@ -9,19 +9,19 @@
         display: flex !important; 
         position: fixed !important;
     }
-    .MuiButtonBase-root {
-        background: #7bb56b !important;
+    .MuiSpeedDial-root .MuiButtonBase-root {
+        background: #9c27b0 !important;
         color: ivory;
     }
-    .MuiList-root {
+    .MuiList-root .swipeable_drawer{
         background: #7bb56b !important;
         
     }
-    .MuiTypography-root {
+    .MuiTypography-root .swipeable_drawer {
         color: ivory;
     }
 
-    .MuiSvgIcon-root {
+    .MuiSvgIcon-root.swipeable_drawer {
         color: ivory;
     }
 
