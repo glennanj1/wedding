@@ -7,7 +7,7 @@ function Accomedations() {
   return (
   <>
   <Nav />
-      <div className="accom_wrapper animate_animated animate__slideInLeft">
+      <div className="accom_wrapper animate__animated animate__slideInLeft">
         <div className="accom_container">
           <h1>Accomedations</h1>
           <h2>
