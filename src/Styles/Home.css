@@ -34,9 +34,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 2rem;
-  color: #f0fff0;
+  color: black;
   text-shadow: 0 0 10px #000;
-  font-family: 'Parisienne', cursive;
+  font-family: 'Raleway', sans-serif;
   font-weight: bold;
   letter-spacing: 0.1em;
   /* text-transform: uppercase; */
@@ -89,9 +89,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 1rem;
-    color: #fff;
+    color: black;
     text-shadow: 4px 4px 4px #000;
-    font-family: 'Parisienne', cursive;
+    font-family: 'Raleway', sans-serif;
     font-weight: bold;
     letter-spacing: 0.1em;
     /* text-transform: uppercase; */
