@@ -9,7 +9,7 @@ function Accomedations() {
   <Nav />
       <div className="accom_wrapper animate__animated animate__slideInLeft">
         <div className="accom_container">
-          <h1>Accomedations</h1>
+          <h1>Accommodations</h1>
           <h2>
             There is a large parking lot available at The Farm Bakery and Events for guests to park in. For guests that will be lodging at the Springhill Suites by Marriott, there will be a shuttle service transporting guests from the hotel- 3800 West Drive Center Valley, PA 18034- to The Farm Bakery and Events at 3:30pm. Following the reception, the shuttle will transport guests from the Farm Bakery back to the Springhill Suites by Marriott at 10:00pm. 
           </h2>

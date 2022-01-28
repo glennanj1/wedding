@@ -76,7 +76,7 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemIcon>
                 <LocationCityIcon />
             </ListItemIcon>
-            <ListItemText primary={'Accomedations'} />
+            <ListItemText primary={'Accommodations'} />
           </ListItem>
       </List>
     </Box>
