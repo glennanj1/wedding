@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Raleway:wght@200&display=swap');
+
+.rsvp-button {
+  position: absolute;
+  background-color: #f7f7f700;
+  border-radius: 5px;
+  font-size: 2rem;
+  color: black;
+  /* text-shadow: 0 0 10px #000; */
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+}
+
+.rsvp-button:hover {
+  background-color: #c8bfb1;
+  border: 1px solid #e6e6e6;
+  color: #cad8f6;
+  cursor: pointer;
+}
+.Typewriter {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: #f0fff0;
+  text-shadow: 0 0 10px #000;
+  font-family: 'Parisienne', cursive;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  /* text-transform: uppercase; */
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 20px;
+
+}
+.App {
+  text-align: center;
+  background-image: url('../Images/alter.png');
+  background-position: center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  background-color: ivory;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .video {
+    width: 100vw;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .app {
+    overflow: hidden;
+    position: relative;
+  }
+  .video {
+    position: absolute;
+    height: 100vh;
+    left: 0;
+  } 
+}
+@media screen and (max-width: 600px) {
+  .Typewriter {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+    color: #fff;
+    text-shadow: 4px 4px 4px #000;
+    font-family: 'Parisienne', cursive;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    /* text-transform: uppercase; */
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 20px;  
+  }
+}

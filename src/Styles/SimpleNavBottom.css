@@ -1,0 +1,29 @@
+@media screen and (min-width: 601px) { 
+    .MuiSpeedDial-root {
+        display: none !important;
+    }
+
+}
+@media screen and (max-width: 600px) { 
+    .MuiSpeedDial-root {
+        display: flex !important; 
+        position: fixed !important;
+    }
+    .MuiButtonBase-root {
+        background: #7bb56b !important;
+        color: ivory;
+    }
+    .MuiList-root {
+        background: #7bb56b !important;
+        
+    }
+    .MuiTypography-root {
+        color: ivory;
+    }
+
+    .MuiSvgIcon-root {
+        color: ivory;
+    }
+
+}
+

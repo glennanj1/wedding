@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+.gMap {
+    border: solid rgba(119, 136, 153, 0.541) 10px;
+    border-radius: 5px;
+    width: 70vw;
+    height: 60vh;
+}
+
+
+
+
+h1.location_h1 {
+    margin: 0;
+}
+
+h2.location_h2 {
+    margin: 0;
+}
+
+.location_container {
+    border-top: solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 30vh;
+    font-family: 'EB Garamond', serif;
+}
+
+.bottom_border {
+    border-bottom: solid;
+}
+
+@media screen and (min-width: 1201px) {
+    .location_picture {
+        background: url('../Images/theFarm.png');
+        background-size: contain;
+        display: flex;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 70vh;
+        width: 100vw;
+        margin-bottom: 20px;
+    }
+    .location_wrapper {
+        position: absolute;
+        top: 18vh;
+    }
+  }
+
+@media screen and (max-width: 1200px) {
+    .location_wrapper {
+        position: absolute;
+        top: 18vh;
+    }
+    .location_picture {
+        background: url('../Images/theFarm.png');
+        background-size: contain;
+        display: flex;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh;
+        width: 100vw
+    }
+}
+
+
+@media screen and (max-width: 600px) { 
+    .location_wrapper {
+        position: absolute;
+        top: 0vh;
+    }
+    .location_picture {
+        background: url('../Images/theFarm.png');
+        background-size: contain;
+        display: flex;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 100vh;
+        width: 100vw
+    }
+
+}

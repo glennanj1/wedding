@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
+
+@media screen and (min-width: 601px) { 
+  .accom_wrapper {
+    position: absolute;
+    top: 20vh;
+    padding: 10px;
+}
+
+.accom_container {
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 50vh;
+    font-family: 'EB Garamond', serif;
+
+}
+
+}
+@media screen and (max-width: 600px) { 
+  .accom_wrapper {
+    position: absolute;
+    top: 2vh;
+    padding: 10px;
+}
+
+.accom_container {
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 50vh;
+    font-size: 10px;
+    font-family: 'EB Garamond', serif;
+
+}
+
+}

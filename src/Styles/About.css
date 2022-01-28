@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&family=Rye&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+.navButton {
+    background-color: #f7f7f700;
+    border-radius: 5px;
+    color: black;
+    text-shadow: 3px 2px 3px white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    padding: 10px;
+    border: none;
+    font-family: 'Dancing Script', cursive;
+}
+
+.navButton:hover {
+    background-color: #f7f7f731;
+    border: 1px solid #e6e6e6;
+    color: #000;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+h1 {
+    text-shadow: 3px 2px 3px white;
+    text-align: center;
+}
+h2 {
+    text-shadow: 3px 2px 3px white;
+    text-align: center;
+}
+
+@media screen and (min-width: 1201px) {
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        font-family: 'Dancing Script', cursive;
+        position: relative;
+        z-index: 1000;
+    }
+    .aboutWrapper {
+        background: url('../Images/euc.png')  -100px 100% repeat-x,
+        url('../Images/euc.png') 100px 100% repeat-x;
+        background-size: contain;
+        position: relative;
+        z-index: 1;
+        /* background-size: contain;
+        background-repeat: repeat-x;*/
+        /* background-position: center; 
+        overflow: hidden; */
+    }
+    .nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 20vh;
+        width: 100vw;
+        position: absolute;
+        z-index: 1;
+    }
+    .photoContainer {
+        display: flex;
+        height: 70vh;
+        width: 50vw;
+        border-radius: 5px;
+        /* background-image: url('../Images/vicNi.png'); */
+        background-size: contain;
+        /* box-shadow: 0px 0px 20px 2px #ba9fa8; */
+        background-repeat: no-repeat;
+        background-position: center;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        background-position: bottom;
+    }
+  }
+  
+  @media screen and (max-width: 1200px) {
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        font-family: 'Dancing Script', cursive;
+    }
+    .aboutWrapper {    
+        background-image: url('../Images/euc.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: repeat;
+        overflow: hidden;
+    }
+    .nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 20vh;
+        width: 100vw;
+        position: absolute;
+        z-index: 1;
+    }
+    .photoContainer {
+        display: flex;
+        height: 70vh;
+        width: 50vw;
+        border-radius: 5px;
+        /* background-image: url('../Images/vicNi.png'); */
+        /* background-color: b89ea994; */
+        background-size: contain;
+        /* box-shadow: 0px 0px 20px 2px #ba9fa8; */
+        background-repeat: no-repeat;
+        background-position: center;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        background-position: bottom;
+    }
+}
+
+
+@media screen and (max-width: 600px) { 
+    .container {
+        width: 100vw;
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        font-family: 'Dancing Script', cursive;
+    }
+    .photoContainer {
+        display: flex;
+        height: 48vh;
+        width: 80vw;
+        border-radius: 5px;
+        /* background-image: url('../Images/vicNi.png'); */
+        /* background-color: #b89ea994; */
+        background-size: contain;
+        /* box-shadow: 0px 0px 20px 2px #ba9fa8; */
+        background-repeat: no-repeat;
+        background-position: bottom;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    .nav {
+        display: none !important;
+    }
+
+    .aboutWrapper {     
+        background-image: url('../Images/euc.png');
+        background-size: cover;
+        background-repeat: repeat;
+        overflow: hidden;
+    }
+
+
+}
