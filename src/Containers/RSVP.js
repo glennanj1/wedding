@@ -11,17 +11,10 @@ import FormLabel from "@mui/material/FormLabel";
 import Switch from "@mui/material/Switch";
 import Checkbox from '@mui/material/Checkbox';
 import Fab from "@mui/material/Fab";
+import { CircularProgress } from "@mui/material";
 
-function RSVP(props) {
-
-  let passError = useCallback(e => {
-    props.handleCallback(e)
-  },[props]) 
+function RSVP() {
   
-  //error checker
-  // const [errorFetchedChecker, setErrorFetchedChecker] = useState(false);
-  // console.log(errorFetchedChecker);
-  //setting initial array
   const [isArray, setisArray] = useState([]);
   //setting name on change handler
   const [isName, setisName] = useState("");
@@ -31,33 +24,32 @@ function RSVP(props) {
   const [isConfirmation, setisConfirmation] = useState(false);
   //set object for confirmation
   const [isGuestConfirmation, setisGuestConfirmation] = useState({})
+  //loading
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-
-      if (props.passClickDown) {
-        setisArrayName('');
-        setisConfirmation(false);
-      }
+      //nav reset implementation 
+      // if () {
+      //   setisArrayName('');
+      //   setisConfirmation(false);
+      // }
 
       fetch("https://wedding-glennan.herokuapp.com/guests")
           .then((r) => r.json())
           .then((data) => {
-            console.log('first fetch or refetching')
+            console.log('fetching or refetching')
             setisArray(data)
-            passError('none')
+            setIsLoading(false);
+            // make sure spinner is disabled if no error
           })
           .catch((err) => {
-            passError(err);
-            //setErrorFetchedChecker(c => !c);
+            // need to load spinner on error
+            setIsLoading(true);
             console.log(err)});
-  }, [passError, props.passClickDown]);
+  }, []);
 
 
-  //handle state change (app is small enough to use local state vs redux)
   const handleStateChange = (obj) => {
-    // console.log("updated obj");
-    // console.log(obj);
-
     //update when submitted
     fetch(`https://wedding-glennan.herokuapp.com/guests/update/${obj._id}`, {
       method: "POST",
@@ -77,8 +69,6 @@ function RSVP(props) {
     })
       .then((r) => r.json())
       .then((data) => {
-        //map over object and find index by name (eventually find by id when hooked up to DB)
-        // console.log(data);
         setisConfirmation(true);
         setisGuestConfirmation(obj);
       })
@@ -86,14 +76,9 @@ function RSVP(props) {
         console.log(err);
         alert('Please Try Again Shortly')
       });
-    
-    // console.log("line 44 is array");
-    // console.log(isArray);
   };
   //set name on change
   const handleChange = (e) => {
-    // console.log("change");
-    // console.log(e.target.value);
     setisName(e.target.value);
     e.preventDefault();
   };
@@ -120,7 +105,13 @@ function RSVP(props) {
   return (
     <>    
     <Nav />
-    {isConfirmation ? (<Confirmation guestConfirmation={isGuestConfirmation} />) : (
+    {isLoading ? (
+      <div className="container">
+        <CircularProgress />
+      </div>
+      ) : (
+      <>
+      {isConfirmation ? (<Confirmation guestConfirmation={isGuestConfirmation} />) : (
     <div className="container animate__animated animate__slideInLeft">
       {isArrayName ? (
         <GuestForm updateState={handleStateChange} guest={isArrayName} />
@@ -128,7 +119,6 @@ function RSVP(props) {
         <>
           <h1>RSVP Form</h1>
           <form onSubmit={handleSubmit}>
-
             <TextField
               required
               id="outlined-basic"
@@ -137,13 +127,13 @@ function RSVP(props) {
               variant="outlined"
               onChange={handleChange}
             />
-        
           </form>
-
           <h1>Please Enter Name</h1>
         </>
       )}
     </div>
+    )}
+      </>
     )}
     </>
   );
@@ -203,11 +193,7 @@ function GuestForm(props) {
   };
 
   const handleSubmit = (e) => {
-      // console.log(e);
       let oldObj = props.guest;
-      // console.log("guest obj" + oldObj);
-      // console.log(isAttending);
-      // console.log("submitted");
       let newObj = {
         ...oldObj,
         attending: isAttending,
@@ -217,10 +203,8 @@ function GuestForm(props) {
         guestMeal: isGuestMeal,
         guestDietary: isGuestDietaryRestriction,
       };
-      // console.log(newObj);
       props.updateState(newObj);
       e.preventDefault();
-    
   };
 
   return (
@@ -228,7 +212,6 @@ function GuestForm(props) {
       {isAttending ? (
         <>
         <form className="rsvpForm" onSubmit={handleSubmit}>
-
           <h1>{props.guest.name}</h1>
           <FormControl color="secondary" component="fieldset">
             <FormLabel component="legend">Food Selection</FormLabel>
