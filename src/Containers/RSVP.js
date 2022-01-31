@@ -12,6 +12,8 @@ import Switch from "@mui/material/Switch";
 import Checkbox from '@mui/material/Checkbox';
 import Fab from "@mui/material/Fab";
 import { CircularProgress } from "@mui/material";
+//style sheet
+import '../Styles/RSVP.css'
 
 function RSVP() {
   
@@ -26,6 +28,8 @@ function RSVP() {
   const [isGuestConfirmation, setisGuestConfirmation] = useState({})
   //loading
   const [isLoading, setIsLoading] = useState(false);
+  //rsvp button clicked
+  //const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
       //nav reset implementation 
@@ -35,17 +39,18 @@ function RSVP() {
       // }
 
       fetch("https://wedding-glennan.herokuapp.com/guests")
-          .then((r) => r.json())
-          .then((data) => {
-            console.log('fetching or refetching')
-            setisArray(data)
-            setIsLoading(false);
-            // make sure spinner is disabled if no error
-          })
-          .catch((err) => {
-            // need to load spinner on error
-            setIsLoading(true);
-            console.log(err)});
+      .then((r) => r.json())
+      .then((data) => {
+        console.log('fetching or refetching')
+        setisArray(data)
+        setIsLoading(false);
+        // make sure spinner is disabled if no error
+      })
+      .catch((err) => {
+        // need to load spinner on error
+        setIsLoading(true);
+        console.log(err)
+      });
   }, []);
 
 
@@ -67,15 +72,15 @@ function RSVP() {
         guestDietary: obj.guestDietary
       }),
     })
-      .then((r) => r.json())
-      .then((data) => {
-        setisConfirmation(true);
-        setisGuestConfirmation(obj);
-      })
-      .catch((err) => {
-        console.log(err);
-        alert('Please Try Again Shortly')
-      });
+    .then((r) => r.json())
+    .then(() => {
+      setisConfirmation(true);
+      setisGuestConfirmation(obj);
+    })
+    .catch((err) => {
+      console.log(err);
+      alert('Please Try Again Shortly')
+    });
   };
   //set name on change
   const handleChange = (e) => {
@@ -86,7 +91,15 @@ function RSVP() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let name = isName.replace(/^\s+|\s+$/gm,'');
-    let person = isArray.find((n) => n.name === name);
+    function toTitleCase(str) {
+      return str.replace(
+        /\w\S*/g,
+        function(txt) {
+          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }
+      );
+    }
+    let person = isArray.find((n) => n.name === toTitleCase(name));
     if (person != null || undefined) {
       //if they already registered
       if (person.Entree !== '' || null) {
@@ -96,7 +109,7 @@ function RSVP() {
       } else {
         setisArrayName(person);
       }
-    } else {
+    } else {  
       alert(`Name ${isName} not found please try again`);
       setisArrayName("");
       console.log("error finding name");
@@ -118,7 +131,7 @@ function RSVP() {
       ) : (
         <>
           <h1>RSVP Form</h1>
-          <form onSubmit={handleSubmit}>
+          <form className="rsvp_form" onSubmit={handleSubmit}>
             <TextField
               required
               id="outlined-basic"
@@ -127,6 +140,14 @@ function RSVP() {
               variant="outlined"
               onChange={handleChange}
             />
+            <Fab
+              type="submit"
+              variant="extended"
+              color="secondary"
+              aria-label="enter"
+            >
+              Enter
+            </Fab>
           </form>
           <h1>Please Enter Name</h1>
         </>
