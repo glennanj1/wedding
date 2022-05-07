@@ -58,20 +58,17 @@ function Location() {
             </div>
             <div className="location_container bottom_border">
                 <h2 className="location_h2">
-                Post Reception Details Coming Soon
-                </h2>
-                {/* <h2 className="location_h2">
-                    Post Reception Gathering
+                  Post Reception Gathering
                 </h2>
                 <h2 className="location_h2">
-                    Location
+                    10:00pm
                 </h2>
                 <h2 className="location_h2">
-                    Address 
+                Springhill Suites by Marriott 
                 </h2>
                 <h2 className="location_h2">
-                    10:00pm 
-                </h2> */}
+                    3800 West Drive, Center Valley, PA 18034
+                </h2>
             </div>
             <div className="container map animate__animated animate__slideInLeft">
 
