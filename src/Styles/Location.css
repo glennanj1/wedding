@@ -34,7 +34,7 @@ h2.location_h2 {
 
 @media screen and (min-width: 1201px) {
     .location_picture {
-        background: url('../Images/theFarm.png');
+        background: url('https://bunnyWedding.b-cdn.net/theFarm.png');
         background-size: contain;
         display: flex;
         background-repeat: no-repeat;
@@ -55,7 +55,7 @@ h2.location_h2 {
         top: 18vh;
     }
     .location_picture {
-        background: url('../Images/theFarm.png');
+        background: url('https://bunnyWedding.b-cdn.net/theFarm.png');
         background-size: contain;
         display: flex;
         background-repeat: no-repeat;
@@ -72,7 +72,7 @@ h2.location_h2 {
         top: 0vh;
     }
     .location_picture {
-        background: url('../Images/theFarm.png');
+        background: url('https://bunnyWedding.b-cdn.net/theFarm.png');
         background-size: contain;
         display: flex;
         background-repeat: no-repeat;

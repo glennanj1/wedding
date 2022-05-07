@@ -48,8 +48,8 @@ h2 {
         font-family: 'Dancing Script', cursive;
     }
     .aboutWrapper {
-        background: url('../Images/euc.png')  -100px 100% repeat-x,
-        url('../Images/euc.png') 100px 100% repeat-x;
+        background: url('https://bunnyWedding.b-cdn.net//euc.png')  -100px 100% repeat-x,
+        url('https://bunnyWedding.b-cdn.net//euc.png') 100px 100% repeat-x;
         background-size: contain;
         position: relative;
         z-index: 1;
@@ -102,7 +102,7 @@ h2 {
         font-family: 'Dancing Script', cursive;
     }
     .aboutWrapper {    
-        background-image: url('../Images/euc.png');
+        background-image: url('https://bunnyWedding.b-cdn.net/euc.png');
         background-size: cover;
         background-position: center;
         background-repeat: repeat;
@@ -175,7 +175,7 @@ h2 {
     }
 
     .aboutWrapper {     
-        background-image: url('../Images/euc.png');
+        background-image: url('https://bunnyWedding.b-cdn.net/euc.png');
         background-size: cover;
         background-repeat: repeat;
         overflow: hidden;
