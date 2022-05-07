@@ -1,0 +1,17 @@
+.aboutUs {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    font-family: 'Dancing Script', cursive;
+}
+
+.aboutUsContainer {
+    position: relative;
+    top: 100px;
+    width: 80vw;
+    font-size: 2em;
+}
