@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../Styles/About.css'
 import 'animate.css';
 import Sound from 'react-sound';
+import Button from '@mui/material/Button';
+
 
 function Us() {
     
@@ -11,6 +13,12 @@ function Us() {
         // Update the document title using the browser API
         setIsPlaying(true)
     }, []);
+
+    let handleClick = () => {
+
+        setIsPlaying(!isPlaying);
+
+    }
 
     return (
         <div className="container animate__animated animate__slideInLeft">
@@ -22,6 +30,7 @@ function Us() {
             <div className="photoContainer">
             <h1>John Glennan & Victoria Dangelo</h1>
             <h2>10.29.2022</h2>
+            <Button variant='outlined' onClick={handleClick}>{isPlaying ? ('Pause') : ('Play')}</Button>
             </div>
         </div>
     )
