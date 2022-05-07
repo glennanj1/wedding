@@ -1,0 +1,17 @@
+.registryContainer {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    font-family: 'Dancing Script', cursive;
+}
+
+a {
+  
+    color: black;
+
+}
