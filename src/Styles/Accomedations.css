@@ -4,7 +4,7 @@ a {
   color: royalblue;
   font-family: 'EB Garamond', serif;
 }
-@media screen and (min-width: 601px) { 
+@media screen and (min-width: 600px) { 
   .text_container {
     display: flex;
     flex-direction: column;
@@ -29,13 +29,13 @@ a {
   } 
   .accom_wrapper {
     position: absolute;
-    top: 20vh;
+    top: 30vh;
     padding: 10px;
     width: 100%;
   }
 
 .accom_container {
-  display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;

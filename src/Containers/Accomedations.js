@@ -22,7 +22,15 @@ function Accomedations() {
           </h3>
           <h2>
             {/* There is a block of rooms available at the Springhill Suites by Marriott Center Valley (make link)- 3800 West Drive Center Valley, PA 18034. Following the reception, there will be a post wedding gathering at the Hotel. */}
-            There is a large parking lot available at The Farm Bakery and Events for guests to park in. For guests that will be lodging at the Springhill Suites by Marriott, there will be transportation from the hotel- 3800 West Drive Center Valley, PA 18034- to The Farm Bakery and Events at 3:30pm. Following the reception, there will be transportation from the Farm Bakery back to the Springhill Suites by Marriott at 10:00pm. 
+            <p>
+              There is a large parking lot available at The Farm Bakery and Events for guests to park in.
+            </p> 
+            <p>
+              For guests that will be lodging at the Springhill Suites by Marriott, there will be transportation from the hotel- 3800 West Drive Center Valley, PA 18034- to The Farm Bakery and Events at 3:30pm.
+            </p> 
+            <p>
+              Following the reception, there will be transportation from the Farm Bakery back to the Springhill Suites by Marriott at 10:00pm. 
+            </p>
           </h2>
           </div>
         </div>

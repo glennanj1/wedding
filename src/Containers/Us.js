@@ -25,7 +25,7 @@ function Us() {
             <Sound
                 url="https://d3ddatyom1hv87.cloudfront.net/oneKiss.mp3"
                 playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
-                volume={50}
+                volume={30} 
                 />
             <div className="photoContainer">
             <h1>John Glennan & Victoria Dangelo</h1>
