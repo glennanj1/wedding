@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../Styles/About.css'
 import 'animate.css';
-// import Sound from 'react-sound';
 import Button from '@mui/material/Button';
 import useSound from 'use-sound';
 
@@ -9,21 +8,24 @@ import useSound from 'use-sound';
 function Us() {
     
     const [isPlaying, setIsPlaying] = useState(false);
-    const [volume, setVolume] = useState(.01);
-    const [play, stop] = useSound('https://d3ddatyom1hv87.cloudfront.net/oneKiss.mp3', {volume});
+    const [volume] = useState(.01);
+    const [play, { stop }] = useSound('https://d3ddatyom1hv87.cloudfront.net/oneKiss.mp3', {volume});
 
 
     useEffect(() => {
-        // Update the document title using the browser API
-        
-    }, [isPlaying, setIsPlaying, play, stop]);
+        if (isPlaying) {
+            play();
+        } else if (!isPlaying) {
+            stop();
+        } 
+    }, [stop, isPlaying, play]);
 
     let handleClick = (e) => {
+        if (e.target.innerText === "PLAY") {
+            setIsPlaying(true)
 
-        if (e.target.innerText === "Play") {
-            stop();
-        } else {
-            play();
+        } else if (e.target.innerText === "PAUSE") {
+            setIsPlaying(false);
         }
     }
 
@@ -38,7 +40,6 @@ function Us() {
             <h1>John Glennan & Victoria Dangelo</h1>
             <h2>10.29.2022</h2>
             <Button variant='outlined' onClick={handleClick}>{isPlaying ? ('Pause') : ('Play')}</Button>
-            {/* <button onClick={play}>Boop!</button> */}
             </div>
         </div>
     )
