@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
+a {
+  color: royalblue;
+  font-family: 'EB Garamond', serif;
+}
+@media screen and (min-width: 600px) { 
+  .text_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+  }
+  .hotel_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95vw;
+  }
+  .hotel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    width: 90vw;
+    height: 20vh;
+  } 
+  .accom_wrapper {
+    position: absolute;
+    top: 30vh;
+    padding: 10px;
+    width: 100%;
+  }
+
+.accom_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    font-family: 'EB Garamond', serif;
+
+}
+
+}
+@media screen and (max-width: 600px) { 
+
+  .text_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+  }
+  
+  .hotel_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hotel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid;
+    border-bottom-width: 1px;
+  }
+
+  .accom_wrapper {
+    position: absolute;
+    top: 2vh;
+    padding: 10px;
+}
+
+.accom_container {
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    font-size: 10px;
+    font-family: 'EB Garamond', serif;
+
+}
+
+}

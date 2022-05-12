@@ -1,0 +1,10 @@
+.rsvp_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.MuiFormControl-root {
+    padding-bottom: 10px !important;
+}

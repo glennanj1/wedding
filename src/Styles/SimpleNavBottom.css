@@ -1,0 +1,29 @@
+@media screen and (min-width: 601px) { 
+    .MuiSpeedDial-root {
+        display: none !important;
+    }
+
+}
+@media screen and (max-width: 600px) { 
+    .MuiSpeedDial-root {
+        display: flex !important; 
+        position: fixed !important;
+    }
+    .MuiSpeedDial-root .MuiButtonBase-root {
+        background: #9c27b0 !important;
+        color: ivory;
+    }
+    .MuiList-root .swipeable_drawer{
+        background: #7bb56b !important;
+        
+    }
+    .MuiTypography-root .swipeable_drawer {
+        color: ivory;
+    }
+
+    .MuiSvgIcon-root.swipeable_drawer {
+        color: ivory;
+    }
+
+}
+
