@@ -19,5 +19,6 @@ a {
 @media (max-width: 768px) {
     .registryContainer {
         height: 100vh;
+        top: 0;
     }
 }
