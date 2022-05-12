@@ -1,6 +1,8 @@
 .registryContainer {
     width: 100vw;
-    height: 80vh;
+    height: 60vh;
+    position: relative;
+    top: 30vh;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -11,7 +13,11 @@
 }
 
 a {
-  
     color: black;
+}
 
+@media (max-width: 768px) {
+    .registryContainer {
+        height: 100vh;
+    }
 }
