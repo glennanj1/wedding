@@ -14,11 +14,11 @@ function Us() {
 
     return (
         <div className="container animate__animated animate__slideInLeft">
-            <Sound
+            {/* <Sound
                 url="https://d3ddatyom1hv87.cloudfront.net/oneKiss.mp3"
                 playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
                 volume={50}
-                />
+                /> */}
             <div className="photoContainer">
             <h1>John & Victoria</h1>
             <h2>10.29.2022</h2>
