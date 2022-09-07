@@ -1,8 +1,8 @@
 import React from 'react'
 import Nav from '../Containers/Nav'
 import '../Styles/Registry.css'
-import target from './images/target.png'
-import amazon from './images/amazon.png'
+import target from '../Images/target.png'
+import amazon from '../Images/amazon.png'
  
 export default function Registry() {
     //href="https://www.target.com/gift-registry/gift/the-future-glennans"
