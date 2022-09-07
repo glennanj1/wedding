@@ -9,6 +9,7 @@ import { createFilterOptions } from '@mui/material/Autocomplete';
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Switch from "@mui/material/Switch";
@@ -264,7 +265,7 @@ function GuestForm(props) {
             <FormControl color="secondary" component="fieldset">
               <FormLabel component="legend">Food Selection</FormLabel>
               <RadioGroup
-                row
+                column
                 aria-label="food"
                 name="row-radio-buttons-group"
                 onChange={handleChange}
@@ -275,16 +276,19 @@ function GuestForm(props) {
                   control={<Radio color="secondary" id="foodSelection" />}
                   label="Chicken"
                 />
+                <FormHelperText id="my-helper-text">Roasted Herb Chicken with a Sherry Mushroom sauce</FormHelperText>
                 <FormControlLabel
                   value="filet"
                   control={<Radio color="secondary" id="foodSelection" />}
                   label="Filet"
                 />
+                <FormHelperText id="my-helper-text">Filet Mignon</FormHelperText>
                 <FormControlLabel
                   value="crab cakes"
                   control={<Radio color="secondary" id="foodSelection" />}
-                  label="Crab Cake"
+                  label="Crab Cakes"
                 />
+                <FormHelperText id="my-helper-text">Maryland Jumbo Lump Crab Cakes</FormHelperText>
               </RadioGroup>
               <FormControlLabel
                 control={
@@ -333,7 +337,7 @@ function GuestForm(props) {
                       </FormLabel>
                       <RadioGroup
                         required
-                        row
+                        column
                         aria-label="food"
                         name="row-radio-buttons-group"
                         onChange={handleChange}
@@ -346,6 +350,7 @@ function GuestForm(props) {
                           }
                           label="Chicken"
                         />
+                        <FormHelperText id="my-helper-text">Roasted Herb Chicken with a Sherry Mushroom sauce</FormHelperText>
                         <FormControlLabel
                           value="filet"
                           control={
@@ -353,6 +358,7 @@ function GuestForm(props) {
                           }
                           label="Filet"
                         />
+                        <FormHelperText id="my-helper-text">Filet Mignon</FormHelperText>
                         <FormControlLabel
                           value="crab cakes"
                           control={
@@ -360,6 +366,7 @@ function GuestForm(props) {
                           }
                           label="Crab Cake"
                         />
+                        <FormHelperText id="my-helper-text">Maryland Jumbo Lump Crab Cakes</FormHelperText>
                       </RadioGroup>
                       <TextField
                         required
@@ -387,8 +394,9 @@ function GuestForm(props) {
         </>
       ) : (
         <>
-          <form className="rsvpForm" onSubmit={handleSubmit}>
+          <form className="notAttending" onSubmit={handleSubmit}>
             <h1>{props.guest.name}</h1>
+            <h2>We are sorry you are unable to make it</h2>
             <FormControlLabel
               control={
                 <Switch
@@ -424,6 +432,7 @@ function Confirmation(props) {
       {props.guestConfirmation.attending ? (
         <div className="container">
           <h1>Confirmation Page</h1>
+          <h2>Thanks for booking {props.guestConfirmation.name} we are looking forward to having you!</h2>
           <h2>Details: </h2>
           <div>
             <ul>
