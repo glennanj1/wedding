@@ -28,7 +28,7 @@ function Home() {
     };
       
     const handleClick = () => {
-      var end = Date.now() + (15 * 1000);
+      var end = Date.now() + (10 * 1000);
     
       // go us!
       var colors = ['#000080', '#B2AC88'];
