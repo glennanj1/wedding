@@ -7,10 +7,6 @@ import confetti from 'canvas-confetti';
 function Accomedations() {
 
   const handleHover = () => {
-      var end = Date.now() + (15 * 1000);
-    
-      // go us!
-      var colors = ['#000080', '#B2AC88'];
     
       (function frame() {
         confetti({

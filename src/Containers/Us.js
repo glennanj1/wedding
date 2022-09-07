@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import '../Styles/About.css'
 import 'animate.css';
 import Button from '@mui/material/Button';
-import useSound from 'use-sound';
 import Sound from 'react-sound'
 
 
