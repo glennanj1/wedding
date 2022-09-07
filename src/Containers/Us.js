@@ -3,39 +3,31 @@ import '../Styles/About.css'
 import 'animate.css';
 import Button from '@mui/material/Button';
 import useSound from 'use-sound';
+import Sound from 'react-sound'
 
 
 function Us() {
     
     const [isPlaying, setIsPlaying] = useState(false);
-    const [volume] = useState(.01);
-    const [play, { stop }] = useSound('https://d3ddatyom1hv87.cloudfront.net/oneKiss.mp3', {volume});
-
 
     useEffect(() => {
-        if (isPlaying) {
-            play();
-        } else if (!isPlaying) {
-            stop();
-        } 
-    }, [stop, isPlaying, play]);
+        // Update the document title using the browser API
+        setIsPlaying(false)
+    }, []);
 
-    let handleClick = (e) => {
-        if (e.target.innerText === "PLAY") {
-            setIsPlaying(true)
+    let handleClick = () => {
 
-        } else if (e.target.innerText === "PAUSE") {
-            setIsPlaying(false);
-        }
+        setIsPlaying(!isPlaying);
+
     }
 
     return (
         <div className="container animate__animated animate__slideInLeft">
-            {/* <Sound
+            <Sound
                 url="https://d3ddatyom1hv87.cloudfront.net/oneKiss.mp3"
                 playStatus={isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED}
-                volume={30} 
-                /> */}
+                volume={60} 
+                />
             <div className="photoContainer">
             <h1>John Glennan & Victoria Dangelo</h1>
             <h2>10.29.2022</h2>
