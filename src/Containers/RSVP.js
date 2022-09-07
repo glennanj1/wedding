@@ -53,7 +53,6 @@ function RSVP() {
       });
   }, []);
 
-
   const handleStateChange = (obj) => {
     //update when submitted
     fetch(`https://wedding-glennan.herokuapp.com/guests/update/${obj._id}`, {
@@ -115,6 +114,10 @@ function RSVP() {
       console.log("error finding name");
     }
   };
+
+  const handleBookAgain = (e) => {
+    setisConfirmation(false);
+  }
   return (
     <>    
     <Nav />
@@ -124,7 +127,7 @@ function RSVP() {
       </div>
       ) : (
       <>
-      {isConfirmation ? (<Confirmation guestConfirmation={isGuestConfirmation} />) : (
+      {isConfirmation ? (<Confirmation guestConfirmation={isGuestConfirmation} bookAgain={handleBookAgain} />) : (
     <div className="container animate__animated animate__slideInLeft">
       {isArrayName ? (
         <GuestForm updateState={handleStateChange} guest={isArrayName} />
@@ -378,6 +381,9 @@ function GuestForm(props) {
 
 function Confirmation(props) {
 
+    const handleBookAgain = () => {
+      props.bookAgain();
+    }
 
     return (
         <>
@@ -405,11 +411,27 @@ function Confirmation(props) {
                     ) : null}
                 </ul>
               </div>
+                <Fab
+                  onClick={handleBookAgain}
+                  variant="extended"
+                  color="secondary"
+                    aria-label="enter"
+                  >
+                    Book Another
+                  </Fab>
           </div>
         ) : (
           <div className="container">
               <h1>Confirmation Page</h1>
               <h2>Sorry That You're Unable To Go!</h2>
+              <Fab
+              variant="extended"
+              color="secondary"
+              aria-label="enter"
+              onClick={handleBookAgain}
+            >
+              Book Another
+            </Fab>
           </div>
         )}
         </>
