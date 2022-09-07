@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
-import Nav from '../Containers/Nav'
+import Nav from "../Containers/Nav";
+import Autocomplete from '@mui/material/Autocomplete';
+import { createFilterOptions } from '@mui/material/Autocomplete';
+
 
 //radio button form control
 import Radio from "@mui/material/Radio";
@@ -9,14 +12,13 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Switch from "@mui/material/Switch";
-import Checkbox from '@mui/material/Checkbox';
+import Checkbox from "@mui/material/Checkbox";
 import Fab from "@mui/material/Fab";
 import { CircularProgress } from "@mui/material";
 //style sheet
-import '../Styles/RSVP.css'
+import "../Styles/RSVP.css";
 
 function RSVP() {
-  
   const [isArray, setisArray] = useState([]);
   //setting name on change handler
   const [isName, setisName] = useState("");
@@ -25,31 +27,32 @@ function RSVP() {
   //set confirmation page on successful patch request
   const [isConfirmation, setisConfirmation] = useState(false);
   //set object for confirmation
-  const [isGuestConfirmation, setisGuestConfirmation] = useState({})
+  const [isGuestConfirmation, setisGuestConfirmation] = useState({});
   //loading
   const [isLoading, setIsLoading] = useState(false);
   //rsvp button clicked
   //const [isClicked, setIsClicked] = useState(false);
+  
 
   useEffect(() => {
-      //nav reset implementation 
-      // if () {
-      //   setisArrayName('');
-      //   setisConfirmation(false);
-      // }
-
-      fetch("https://wedding-glennan.herokuapp.com/guests")
-      .then((r) => r.json())
-      .then((data) => {
-        console.log('fetching or refetching')
-        setisArray(data)
+    //nav reset implementation
+    // if () {
+    //   setisArrayName('');
+    //   setisConfirmation(false);
+    // }
+    
+    fetch("https://wedding-glennan.herokuapp.com/guests")
+    .then((r) => r.json())
+    .then((data) => {
+        console.log("fetching or refetching");
+        setisArray(data);
         setIsLoading(false);
         // make sure spinner is disabled if no error
       })
       .catch((err) => {
         // need to load spinner on error
         setIsLoading(true);
-        console.log(err)
+        console.log(err);
       });
   }, []);
 
@@ -68,47 +71,45 @@ function RSVP() {
         Dietary: obj.Dietary,
         guestName: obj.guestName,
         guestMeal: obj.guestMeal,
-        guestDietary: obj.guestDietary
+        guestDietary: obj.guestDietary,
       }),
     })
-    .then((r) => r.json())
-    .then(() => {
-      setisConfirmation(true);
-      setisGuestConfirmation(obj);
-    })
-    .catch((err) => {
-      console.log(err);
-      alert('Please Try Again Shortly')
-    });
+      .then((r) => r.json())
+      .then(() => {
+        setisConfirmation(true);
+        setisGuestConfirmation(obj);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Please Try Again Shortly");
+      });
   };
   //set name on change
   const handleChange = (e) => {
-    setisName(e.target.value);
+    debugger;
+    setisName(e.target.innerHTML);
     e.preventDefault();
   };
   //handle submission find name and set array name if found else render alert or error
   const handleSubmit = (e) => {
     e.preventDefault();
-    let name = isName.replace(/^\s+|\s+$/gm,'');
+    let name = isName.replace(/^\s+|\s+$/gm, "");
     function toTitleCase(str) {
-      return str.replace(
-        /\w\S*/g,
-        function(txt) {
-          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        }
-      );
+      return str.replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
     }
     let person = isArray.find((n) => n.name === toTitleCase(name));
     if (person != null || undefined) {
       //if they already registered
-      if (person.Entree !== '' || null) {
+      if (person.Entree !== "" || null) {
         setisConfirmation(true);
         // console.log(person);
         setisGuestConfirmation(person);
       } else {
         setisArrayName(person);
       }
-    } else {  
+    } else {
       alert(`Name ${isName} not found please try again`);
       setisArrayName("");
       console.log("error finding name");
@@ -117,48 +118,71 @@ function RSVP() {
 
   const handleBookAgain = (e) => {
     setisConfirmation(false);
-  }
+  };
+
+  const filterOptions = createFilterOptions({
+    ignoreCase: true,
+    limit: 1
+  });
+
   return (
-    <>    
-    <Nav />
-    {isLoading ? (
-      <div className="container">
-        <CircularProgress />
-      </div>
-      ) : (
-      <>
-      {isConfirmation ? (<Confirmation guestConfirmation={isGuestConfirmation} bookAgain={handleBookAgain} />) : (
-    <div className="container animate__animated animate__slideInLeft">
-      {isArrayName ? (
-        <GuestForm updateState={handleStateChange} guest={isArrayName} />
+    <>
+      <Nav />
+      {isLoading ? (
+        <div className="container">
+          <CircularProgress />
+        </div>
       ) : (
         <>
-          <h1>RSVP Form</h1>
-          <form className="rsvp_form" onSubmit={handleSubmit}>
-            <TextField
-              required
-              id="outlined-basic"
-              label="Name"
-              color="secondary"
-              variant="outlined"
-              onChange={handleChange}
+          {isConfirmation ? (
+            <Confirmation
+              guestConfirmation={isGuestConfirmation}
+              bookAgain={handleBookAgain}
             />
-            <Fab
-              type="submit"
-              variant="extended"
-              color="secondary"
-              aria-label="enter"
-            >
-              Enter
-            </Fab>
-          </form>
-          <h1>Please Enter Name</h1>
+          ) : (
+            <div className="container animate__animated animate__slideInLeft">
+              {isArrayName ? (
+                <GuestForm
+                  updateState={handleStateChange}
+                  guest={isArrayName}
+                />
+              ) : (
+                <>
+                  <h1>RSVP Form</h1>
+                  <form className="rsvp_form" onSubmit={handleSubmit}>
+                  <Autocomplete
+                      disablePortal
+                      id="combo-box-demo"
+                      options={isArray.map(n => n.name)}
+                      sx={{ width: 300 }}
+                      filterOptions={filterOptions}
+                      renderInput={(params) => <TextField required {...params} label="Name" />}
+                      onChange={handleChange}
+                    />
+                    {/* <TextField
+                      required
+                      id="outlined-basic"
+                      label="Name"
+                      color="secondary"
+                      variant="outlined"
+                      onChange={handleChange}
+                    /> */}
+                    <Fab
+                      type="submit"
+                      variant="extended"
+                      color="secondary"
+                      aria-label="enter"
+                    >
+                      Enter
+                    </Fab>
+                  </form>
+                  <h1>Please Enter Name</h1>
+                </>
+              )}
+            </div>
+          )}
         </>
       )}
-    </div>
-    )}
-      </>
-    )}
     </>
   );
 }
@@ -172,7 +196,7 @@ function GuestForm(props) {
   const [isGuestMeal, setisGuestMeal] = useState("chicken");
   const [isGuestDietaryRestriction, setisGuestDietaryRestriction] =
     useState("null");
-  const [isPlusOne, setisPlusOne] = useState(false)
+  const [isPlusOne, setisPlusOne] = useState(false);
 
   const handleChange = (e) => {
     // console.log("target id: " + e.target.id);
@@ -204,11 +228,11 @@ function GuestForm(props) {
         break;
       case "plusOne":
         // console.log('plus one')
-        setisPlusOne(e.target.checked)
-        if (e.target.checked === false){
-          setisGuestName('null');
-          setisGuestMeal('null');
-          setisGuestDietaryRestriction('null');
+        setisPlusOne(e.target.checked);
+        if (e.target.checked === false) {
+          setisGuestName("null");
+          setisGuestMeal("null");
+          setisGuestDietaryRestriction("null");
         }
         break;
       default:
@@ -217,55 +241,157 @@ function GuestForm(props) {
   };
 
   const handleSubmit = (e) => {
-      let oldObj = props.guest;
-      let newObj = {
-        ...oldObj,
-        attending: isAttending,
-        Entree: isFoodSelection,
-        Dietary: isDietaryRestriction,
-        guestName: isGuestName,
-        guestMeal: isGuestMeal,
-        guestDietary: isGuestDietaryRestriction,
-      };
-      props.updateState(newObj);
-      e.preventDefault();
+    let oldObj = props.guest;
+    let newObj = {
+      ...oldObj,
+      attending: isAttending,
+      Entree: isFoodSelection,
+      Dietary: isDietaryRestriction,
+      guestName: isGuestName,
+      guestMeal: isGuestMeal,
+      guestDietary: isGuestDietaryRestriction,
+    };
+    props.updateState(newObj);
+    e.preventDefault();
   };
 
   return (
     <>
       {isAttending ? (
         <>
-        <form className="rsvpForm" onSubmit={handleSubmit}>
-          <h1>{props.guest.name}</h1>
-          <FormControl color="secondary" component="fieldset">
-            <FormLabel component="legend">Food Selection</FormLabel>
-            <RadioGroup
-              row
-              aria-label="food"
-              name="row-radio-buttons-group"
-              onChange={handleChange}
-              defaultValue="chicken"
-            >
+          <form className="rsvpForm" onSubmit={handleSubmit}>
+            <h1>{props.guest.name}</h1>
+            <FormControl color="secondary" component="fieldset">
+              <FormLabel component="legend">Food Selection</FormLabel>
+              <RadioGroup
+                row
+                aria-label="food"
+                name="row-radio-buttons-group"
+                onChange={handleChange}
+                defaultValue="chicken"
+              >
+                <FormControlLabel
+                  value="chicken"
+                  control={<Radio color="secondary" id="foodSelection" />}
+                  label="Chicken"
+                />
+                <FormControlLabel
+                  value="filet"
+                  control={<Radio color="secondary" id="foodSelection" />}
+                  label="Filet"
+                />
+                <FormControlLabel
+                  value="crab cakes"
+                  control={<Radio color="secondary" id="foodSelection" />}
+                  label="Crab Cake"
+                />
+              </RadioGroup>
               <FormControlLabel
-                value="chicken"
-                control={<Radio color="secondary" id="foodSelection" />}
-                label="Chicken"
+                control={
+                  <Switch
+                    defaultChecked
+                    color="secondary"
+                    onChange={handleChange}
+                    id="attending"
+                  />
+                }
+                label="Attending"
               />
-              <FormControlLabel
-                value="filet"
-                control={<Radio color="secondary" id="foodSelection" />}
-                label="Filet"
+              <TextField
+                required
+                id="dietary"
+                label="Dietary Restrictions"
+                color="secondary"
+                variant="outlined"
+                onChange={handleChange}
               />
-              <FormControlLabel
-                value="crab cakes"
-                control={<Radio color="secondary" id="foodSelection" />}
-                label="Crab Cake"
-              />
-            </RadioGroup>
+              {props.guest.numberOfGuests === 0 ? null : (
+                <>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        onChange={handleChange}
+                        id="plusOne"
+                        color="secondary"
+                      />
+                    }
+                    label="Plus One"
+                  />
+                  {isPlusOne ? (
+                    <>
+                      <h1>Guest Form</h1>
+                      <TextField
+                        required
+                        id="guestName"
+                        label="Name"
+                        color="secondary"
+                        variant="outlined"
+                        onChange={handleChange}
+                      />
+                      <FormLabel component="legend">
+                        Guest Food Selection
+                      </FormLabel>
+                      <RadioGroup
+                        required
+                        row
+                        aria-label="food"
+                        name="row-radio-buttons-group"
+                        onChange={handleChange}
+                        defaultValue="chicken"
+                      >
+                        <FormControlLabel
+                          value="chicken"
+                          control={
+                            <Radio color="secondary" id="guestfoodSelection" />
+                          }
+                          label="Chicken"
+                        />
+                        <FormControlLabel
+                          value="filet"
+                          control={
+                            <Radio color="secondary" id="guestfoodSelection" />
+                          }
+                          label="Filet"
+                        />
+                        <FormControlLabel
+                          value="crab cakes"
+                          control={
+                            <Radio color="secondary" id="guestfoodSelection" />
+                          }
+                          label="Crab Cake"
+                        />
+                      </RadioGroup>
+                      <TextField
+                        required
+                        id="guestDietary"
+                        label="Dietary Restrictions"
+                        color="secondary"
+                        variant="outlined"
+                        onChange={handleChange}
+                      />
+                    </>
+                  ) : null}
+                </>
+              )}
+
+              <Fab
+                type="submit"
+                variant="extended"
+                color="secondary"
+                aria-label="add"
+              >
+                Submit
+              </Fab>
+            </FormControl>
+          </form>
+        </>
+      ) : (
+        <>
+          <form className="rsvpForm" onSubmit={handleSubmit}>
+            <h1>{props.guest.name}</h1>
             <FormControlLabel
               control={
                 <Switch
-                  defaultChecked
                   color="secondary"
                   onChange={handleChange}
                   id="attending"
@@ -273,72 +399,6 @@ function GuestForm(props) {
               }
               label="Attending"
             />
-            <TextField
-              required
-              id="dietary"
-              label="Dietary Restrictions"
-              color="secondary"
-              variant="outlined"
-              onChange={handleChange}
-            />
-            {props.guest.numberOfGuests === 0 ? null : (
-              <>
-                <FormControlLabel control={<Checkbox onChange={handleChange} id="plusOne" color="secondary"/>} label="Plus One" />
-                {isPlusOne ? (
-                  <>
-                  <h1>Guest Form</h1>
-                  <TextField
-                    required
-                    id="guestName"
-                    label="Name"
-                    color="secondary"
-                    variant="outlined"
-                    onChange={handleChange}
-                  />
-                  <FormLabel component="legend">Guest Food Selection</FormLabel>
-                  <RadioGroup
-                    required
-                    row
-                    aria-label="food"
-                    name="row-radio-buttons-group"
-                    onChange={handleChange}
-                    defaultValue="chicken"
-                  >
-                    <FormControlLabel
-                      value="chicken"
-                      control={
-                        <Radio color="secondary" id="guestfoodSelection" />
-                      }
-                      label="Chicken"
-                    />
-                    <FormControlLabel
-                      value="filet"
-                      control={
-                        <Radio color="secondary" id="guestfoodSelection" />
-                      }
-                      label="Filet"
-                    />
-                    <FormControlLabel
-                      value="crab cakes"
-                      control={
-                        <Radio color="secondary" id="guestfoodSelection" />
-                      }
-                      label="Crab Cake"
-                    />
-                  </RadioGroup>
-                  <TextField
-                    required
-                    id="guestDietary"
-                    label="Dietary Restrictions"
-                    color="secondary"
-                    variant="outlined"
-                    onChange={handleChange}
-                  />
-                 </>
-                ) : null}
-              </>
-            )}
-
             <Fab
               type="submit"
               variant="extended"
@@ -347,97 +407,70 @@ function GuestForm(props) {
             >
               Submit
             </Fab>
-          </FormControl>
-        </form>
-        </>        
-      ) : (
-        <>
-        <form className="rsvpForm" onSubmit={handleSubmit}>
-          <h1>{props.guest.name}</h1>
-          <FormControlLabel
-            control={
-              <Switch
-                color="secondary"
-                onChange={handleChange}
-                id="attending"
-              />
-            }
-            label="Attending"
-          />
-          <Fab
-            type="submit"
-            variant="extended"
-            color="secondary"
-            aria-label="add"
-          >
-            Submit
-          </Fab>
-        </form>
+          </form>
         </>
-      )}     
+      )}
     </>
   );
 }
 
 function Confirmation(props) {
+  const handleBookAgain = () => {
+    props.bookAgain();
+  };
 
-    const handleBookAgain = () => {
-      props.bookAgain();
-    }
-
-    return (
-        <>
-        {props.guestConfirmation.attending ? (
-          <div className="container">
-              <h1>Confirmation Page</h1>
-              <h2>Details: </h2>
-              <div> 
-                <ul>
-                    <li>Your Name: {props.guestConfirmation.name}</li>
-                    <li>Your Entree: {props.guestConfirmation.Entree}</li>
-                    <li>Dietary Restrictions: {props.guestConfirmation.Dietary}</li>
-                    {props.guestConfirmation.numberOfGuests !== 0 ? (
-                        <>
-                            {props.guestConfirmation.guestName !== 'null' ? (
-                              <>
-                              <li>Plus One: ✅</li>
-                              <li>Guest Name: {props.guestConfirmation.guestName}</li>
-                              <li>Guest Meal: {props.guestConfirmation.guestMeal}</li>
-                              <li>Guest Dietary: {props.guestConfirmation.guestDietary}</li>  
-                              </>
-
-                            ) : null }
-                        </>                  
-                    ) : null}
-                </ul>
-              </div>
-                <Fab
-                  onClick={handleBookAgain}
-                  variant="extended"
-                  color="secondary"
-                    aria-label="enter"
-                  >
-                    Book Another
-                  </Fab>
+  return (
+    <>
+      {props.guestConfirmation.attending ? (
+        <div className="container">
+          <h1>Confirmation Page</h1>
+          <h2>Details: </h2>
+          <div>
+            <ul>
+              <li>Your Name: {props.guestConfirmation.name}</li>
+              <li>Your Entree: {props.guestConfirmation.Entree}</li>
+              <li>Dietary Restrictions: {props.guestConfirmation.Dietary}</li>
+              {props.guestConfirmation.numberOfGuests !== 0 ? (
+                <>
+                  {props.guestConfirmation.guestName !== "null" ? (
+                    <>
+                      <li>Plus One: ✅</li>
+                      <li>Guest Name: {props.guestConfirmation.guestName}</li>
+                      <li>Guest Meal: {props.guestConfirmation.guestMeal}</li>
+                      <li>
+                        Guest Dietary: {props.guestConfirmation.guestDietary}
+                      </li>
+                    </>
+                  ) : null}
+                </>
+              ) : null}
+            </ul>
           </div>
-        ) : (
-          <div className="container">
-              <h1>Confirmation Page</h1>
-              <h2>Sorry That You're Unable To Go!</h2>
-              <Fab
-              variant="extended"
-              color="secondary"
-              aria-label="enter"
-              onClick={handleBookAgain}
-            >
-              Book Another
-            </Fab>
-          </div>
-        )}
-        </>
-
-    )
-    
+          <Fab
+            onClick={handleBookAgain}
+            variant="extended"
+            color="secondary"
+            aria-label="enter"
+          >
+            Book Another
+          </Fab>
+        </div>
+      ) : (
+        <div className="container">
+          <h1>Confirmation Page</h1>
+          <h2>Sorry That You're Unable To Go!</h2>
+          <Fab
+            variant="extended"
+            color="secondary"
+            aria-label="enter"
+            onClick={handleBookAgain}
+          >
+            Book Another
+          </Fab>
+        </div>
+      )}
+    </>
+  );
 }
 
 export default RSVP;
