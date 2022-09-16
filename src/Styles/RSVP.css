@@ -1,3 +1,7 @@
+.MuiButtonBase-root.MuiFab-root {
+    background-color: #8ABD91 !important;
+
+}
 @media screen and (max-width: 1500px) and (min-width: 600px) {
     
     .rsvpForm {
