@@ -1,6 +1,5 @@
 .MuiButtonBase-root.MuiFab-root {
     background-color: #8ABD91 !important;
-
 }
 
 .MuiRadio-root.Mui-checked {
@@ -16,13 +15,33 @@
 
 .MuiSwitch-track {    
     background-color: #8ABD91 !important;
-
 }
 
 .MuiFormLabel-root.MuiFormLabel-colorSecondary {
     color: #8ABD91 !important;
+}
+
+.MuiOutlinedInput-root.MuiInputBase-root.MuiInputBase-colorPrimary {
+    color: #8ABD91 !important;
+}
+
+.MuiFormLabel-root.MuiInputLabel-root {
+    color: #8ABD91 !important;
+}
+
+fieldset {
+    border-color: #8ABD91 !important;
 
 }
+
+.MuiCheckbox-root.MuiCheckbox-colorSecondary {
+    color: #8ABD91 !important;
+}
+    
+
+
+
+
 @media screen and (max-width: 1500px) and (min-width: 600px) {
     
     .rsvpForm {
