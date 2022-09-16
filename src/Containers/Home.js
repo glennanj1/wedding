@@ -31,18 +31,18 @@ function Home() {
       var end = Date.now() + (10 * 1000);
     
       // go us!
-      var colors = ['#000080', '#B2AC88'];
+      var colors = ['#000080', '#8ABD91'];
     
       (function frame() {
         confetti({
-          particleCount: 1,
+          particleCount: 2,
           angle: 60,
           spread: 55,
           origin: { x: 0 },
           colors: colors
         });
         confetti({
-          particleCount: 1,
+          particleCount: 2,
           angle: 120,
           spread: 55,
           origin: { x: 1 },
