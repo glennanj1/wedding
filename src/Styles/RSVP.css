@@ -2,6 +2,27 @@
     background-color: #8ABD91 !important;
 
 }
+
+.MuiRadio-root.Mui-checked {
+    color: #8ABD91 !important;
+}
+
+.MuiSwitch-switchBase.MuiSwitch-colorPrimary {
+    color: #8ABD91 !important;
+}
+.MuiSwitch-switchBase.MuiSwitch-colorSecondary {
+    color: #8ABD91 !important;
+}
+
+.MuiSwitch-track {    
+    background-color: #8ABD91 !important;
+
+}
+
+.MuiFormLabel-root.MuiFormLabel-colorSecondary {
+    color: #8ABD91 !important;
+
+}
 @media screen and (max-width: 1500px) and (min-width: 600px) {
     
     .rsvpForm {
