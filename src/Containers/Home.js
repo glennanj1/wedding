@@ -64,7 +64,7 @@ function Home() {
             <div className="App">
                 <Typewriter
                     options={{
-                    strings: ['We are getting married!!!', 'Thanks for Visitng', 'Come Back any time!', "Who's excited?", 'Chicken? Filet? Crab Cakes?'],
+                    strings: ['Welcome!', 'We are getting married!!!', 'Thanks for Visitng', 'Come Back any time!', "Who's excited?", 'Chicken? Filet? Crab Cakes?', 'This website was built with love', 'So excited to see everyone'],
                     autoStart: true,
                     loop: true,
                     }}
