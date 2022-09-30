@@ -119,6 +119,10 @@ function RSVP() {
 
   const handleBookAgain = (e) => {
     setisConfirmation(false);
+    setisName('');
+    setisArrayName('');
+    setisGuestConfirmation({});
+    
   };
 
   const filterOptions = createFilterOptions({
